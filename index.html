@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
 <title>THE ⚔ CONQUEROR | Admin</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -25,7 +33,14 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: radial-gradient(circle, #4d1708 0%, #120806 45%, #070707 80%);
+
+  background:
+    radial-gradient(
+      circle,
+      #4d1708 0%,
+      #120806 45%,
+      #070707 80%
+    );
 }
 
 .login-box {
@@ -97,6 +112,7 @@ button {
   color: #ff7777;
 }
 
+
 /* DASHBOARD */
 
 #dashboard {
@@ -113,6 +129,7 @@ header {
   width: 94%;
   max-width: 1200px;
   margin: auto;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -150,6 +167,7 @@ header p {
   color: #ff7777;
 }
 
+
 /* STATS */
 
 .stats {
@@ -178,6 +196,7 @@ header p {
   color: #ff652c;
 }
 
+
 /* SEARCH */
 
 .toolbar {
@@ -196,6 +215,7 @@ header p {
   color: white;
 }
 
+
 /* TABLE */
 
 .table-wrapper {
@@ -207,7 +227,7 @@ header p {
 
 table {
   width: 100%;
-  min-width: 750px;
+  min-width: 800px;
   border-collapse: collapse;
 }
 
@@ -244,10 +264,17 @@ th {
   color: #ff6969;
 }
 
+
+/* ACTION BUTTONS */
+
 .action {
   padding: 7px 10px;
   margin-right: 4px;
   color: white;
+}
+
+.view {
+  background: #444;
 }
 
 .approve {
@@ -258,13 +285,139 @@ th {
   background: #a71919;
 }
 
+
+/* APPLICATION MODAL */
+
+#applicationModal {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.85);
+
+  z-index: 1000;
+
+  padding: 20px;
+
+  overflow-y: auto;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 30px auto;
+
+  background: #101010;
+
+  border: 1px solid #333;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #351006,
+      #101010
+    );
+
+  border-bottom: 1px solid #292929;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #ff652c;
+}
+
+.close-button {
+  background: #333;
+  color: white;
+  padding: 9px 13px;
+}
+
+.modal-content {
+  padding: 25px;
+}
+
+.detail {
+  padding: 15px 0;
+  border-bottom: 1px solid #252525;
+}
+
+.detail:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  color: white;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.detail-reason {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  padding: 20px 25px;
+
+  border-top: 1px solid #292929;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 13px;
+  color: white;
+}
+
+.modal-approve {
+  background: #087f3d;
+}
+
+.modal-reject {
+  background: #a71919;
+}
+
+.modal-status {
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+
+/* LOADING */
+
 .loading {
   text-align: center;
   color: #888;
   padding: 30px;
 }
 
+
 @media (max-width: 700px) {
+
   .stats {
     grid-template-columns: 1fr 1fr;
   }
@@ -276,11 +429,20 @@ th {
   .header-inner {
     gap: 15px;
   }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
 }
+
 </style>
+
 </head>
 
+
 <body>
+
 
 <!-- LOGIN PAGE -->
 
@@ -289,41 +451,63 @@ th {
   <div class="login-box">
 
     <div class="login-logo">
-      <h1>THE ⚔ CONQUEROR</h1>
-      <p>Admin Dashboard</p>
+
+      <h1>
+        THE ⚔ CONQUEROR
+      </h1>
+
+      <p>
+        Admin Dashboard
+      </p>
+
     </div>
+
 
     <form id="loginForm">
 
       <label>
+
         Admin Email
+
         <input
           type="email"
           id="email"
           placeholder="Enter admin email"
           required
         >
+
       </label>
 
+
       <label>
+
         Password
+
         <input
           type="password"
           id="password"
           placeholder="Enter password"
           required
         >
+
       </label>
+
 
       <button
         type="submit"
         class="login-button"
         id="loginButton"
       >
+
         🔐 LOGIN
+
       </button>
 
-      <div id="loginError" class="login-error"></div>
+
+      <div
+        id="loginError"
+        class="login-error"
+      ></div>
 
     </form>
 
@@ -332,21 +516,36 @@ th {
 </section>
 
 
+
 <!-- DASHBOARD -->
 
 <section id="dashboard">
+
 
 <header>
 
   <div class="header-inner">
 
     <div>
-      <h1>THE ⚔ CONQUEROR</h1>
-      <p>Guild Recruitment Admin Dashboard</p>
+
+      <h1>
+        THE ⚔ CONQUEROR
+      </h1>
+
+      <p>
+        Guild Recruitment Admin Dashboard
+      </p>
+
     </div>
 
-    <button class="logout" id="logoutButton">
+
+    <button
+      class="logout"
+      id="logoutButton"
+    >
+
       LOGOUT
+
     </button>
 
   </div>
@@ -354,34 +553,85 @@ th {
 </header>
 
 
+
 <div class="container">
 
+
   <div id="error"></div>
+
+
+  <!-- STATS -->
 
   <div class="stats">
 
     <div class="stat">
-      <div class="stat-title">TOTAL APPLICATIONS</div>
-      <div class="stat-number" id="total">0</div>
+
+      <div class="stat-title">
+        TOTAL APPLICATIONS
+      </div>
+
+      <div
+        class="stat-number"
+        id="total"
+      >
+        0
+      </div>
+
     </div>
 
-    <div class="stat">
-      <div class="stat-title">PENDING</div>
-      <div class="stat-number" id="pending">0</div>
-    </div>
 
     <div class="stat">
-      <div class="stat-title">APPROVED</div>
-      <div class="stat-number" id="approved">0</div>
+
+      <div class="stat-title">
+        PENDING
+      </div>
+
+      <div
+        class="stat-number"
+        id="pending"
+      >
+        0
+      </div>
+
     </div>
 
+
     <div class="stat">
-      <div class="stat-title">REJECTED</div>
-      <div class="stat-number" id="rejected">0</div>
+
+      <div class="stat-title">
+        APPROVED
+      </div>
+
+      <div
+        class="stat-number"
+        id="approved"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-title">
+        REJECTED
+      </div>
+
+      <div
+        class="stat-number"
+        id="rejected"
+      >
+        0
+      </div>
+
     </div>
 
   </div>
 
+
+
+  <!-- SEARCH -->
 
   <div class="toolbar">
 
@@ -392,34 +642,74 @@ th {
       placeholder="Search by IGN or UID..."
     >
 
-    <button class="refresh" id="refreshButton">
+
+    <button
+      class="refresh"
+      id="refreshButton"
+    >
+
       🔄 REFRESH
+
     </button>
 
   </div>
 
+
+
+  <!-- APPLICATION TABLE -->
 
   <div class="table-wrapper">
 
     <table>
 
       <thead>
+
         <tr>
-          <th>IGN</th>
-          <th>UID</th>
-          <th>ROLE</th>
-          <th>RANK</th>
-          <th>STATUS</th>
-          <th>ACTION</th>
+
+          <th>
+            IGN
+          </th>
+
+          <th>
+            UID
+          </th>
+
+          <th>
+            ROLE
+          </th>
+
+          <th>
+            RANK
+          </th>
+
+          <th>
+            STATUS
+          </th>
+
+          <th>
+            ACTION
+          </th>
+
         </tr>
+
       </thead>
 
-      <tbody id="applications">
+
+      <tbody
+        id="applications"
+      >
 
         <tr>
-          <td colspan="6" class="loading">
+
+          <td
+            colspan="6"
+            class="loading"
+          >
+
             Loading applications...
+
           </td>
+
         </tr>
 
       </tbody>
@@ -428,194 +718,425 @@ th {
 
   </div>
 
+
 </div>
 
 </section>
 
 
+
+<!-- APPLICATION DETAILS MODAL -->
+
+<div
+  id="applicationModal"
+>
+
+
+  <div class="modal-box">
+
+
+    <div class="modal-header">
+
+      <h2>
+        ⚔ APPLICATION DETAILS
+      </h2>
+
+
+      <button
+        class="close-button"
+        onclick="closeApplication()"
+      >
+
+        ✕
+
+      </button>
+
+    </div>
+
+
+
+    <div
+      class="modal-content"
+      id="applicationDetails"
+    >
+
+    </div>
+
+
+    <div
+      class="modal-actions"
+      id="modalActions"
+    >
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
 <script>
 
-/* SUPABASE CONFIG */
+
+/*
+========================================
+SUPABASE CONFIG
+========================================
+*/
 
 const SUPABASE_URL =
   "https://muyggfhblazjqoewrxth.supabase.co";
+
 
 const SUPABASE_ANON_KEY =
   "sb_publishable_M_7Cb2GtvzQqLftmUJE_1Q_fXB1e3Ma";
 
 
-/* VARIABLES */
+/*
+========================================
+VARIABLES
+========================================
+*/
 
 let accessToken = null;
+
 let allApplications = [];
 
+let selectedApplication = null;
 
-/* ELEMENTS */
+
+/*
+========================================
+ELEMENTS
+========================================
+*/
 
 const loginPage =
-  document.getElementById("loginPage");
+  document.getElementById(
+    "loginPage"
+  );
+
 
 const dashboard =
-  document.getElementById("dashboard");
+  document.getElementById(
+    "dashboard"
+  );
+
 
 const loginForm =
-  document.getElementById("loginForm");
+  document.getElementById(
+    "loginForm"
+  );
+
 
 const loginButton =
-  document.getElementById("loginButton");
+  document.getElementById(
+    "loginButton"
+  );
+
 
 const loginError =
-  document.getElementById("loginError");
+  document.getElementById(
+    "loginError"
+  );
+
 
 const applicationsTable =
-  document.getElementById("applications");
+  document.getElementById(
+    "applications"
+  );
+
 
 const errorBox =
-  document.getElementById("error");
+  document.getElementById(
+    "error"
+  );
 
 
-/* LOGIN */
+const applicationModal =
+  document.getElementById(
+    "applicationModal"
+  );
 
-loginForm.addEventListener("submit", async function(event) {
 
-  event.preventDefault();
+const applicationDetails =
+  document.getElementById(
+    "applicationDetails"
+  );
 
-  loginError.style.display = "none";
 
-  loginButton.disabled = true;
-  loginButton.textContent = "LOGGING IN...";
+const modalActions =
+  document.getElementById(
+    "modalActions"
+  );
 
-  const email =
-    document.getElementById("email").value.trim();
 
-  const password =
-    document.getElementById("password").value;
+/*
+========================================
+LOGIN
+========================================
+*/
 
-  try {
+loginForm.addEventListener(
+  "submit",
+  async function(event) {
 
-    const response = await fetch(
-      SUPABASE_URL +
-      "/auth/v1/token?grant_type=password",
-      {
-        method: "POST",
+    event.preventDefault();
 
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Content-Type": "application/json"
-        },
+    loginError.style.display =
+      "none";
 
-        body: JSON.stringify({
-          email: email,
-          password: password
-        })
+    loginButton.disabled =
+      true;
+
+    loginButton.textContent =
+      "LOGGING IN...";
+
+
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
+
+
+    const password =
+      document
+        .getElementById("password")
+        .value;
+
+
+    try {
+
+      const response =
+        await fetch(
+
+          SUPABASE_URL +
+          "/auth/v1/token?grant_type=password",
+
+          {
+
+            method:
+              "POST",
+
+            headers: {
+
+              "apikey":
+                SUPABASE_ANON_KEY,
+
+              "Content-Type":
+                "application/json"
+
+            },
+
+            body:
+              JSON.stringify({
+
+                email:
+                  email,
+
+                password:
+                  password
+
+              })
+
+          }
+
+        );
+
+
+      const result =
+        await response.json();
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          result.error_description ||
+          result.msg ||
+          result.message ||
+          "Login failed."
+        );
+
       }
-    );
 
-    const result = await response.json();
 
-    if (!response.ok) {
-      throw new Error(
-        result.error_description ||
-        result.msg ||
-        result.message ||
-        "Login failed."
+      accessToken =
+        result.access_token;
+
+
+      localStorage.setItem(
+        "tc_admin_access_token",
+        accessToken
       );
+
+
+      showDashboard();
+
+
     }
 
-    accessToken = result.access_token;
 
-    localStorage.setItem(
-      "tc_admin_access_token",
-      accessToken
-    );
+    catch (error) {
 
-    showDashboard();
+      console.error(error);
 
-  } catch (error) {
+      loginError.textContent =
+        error.message;
 
-    console.error(error);
+      loginError.style.display =
+        "block";
 
-    loginError.textContent = error.message;
-    loginError.style.display = "block";
 
-    loginButton.disabled = false;
-    loginButton.textContent = "🔐 LOGIN";
+      loginButton.disabled =
+        false;
+
+      loginButton.textContent =
+        "🔐 LOGIN";
+
+    }
+
   }
 
-});
+);
 
 
-/* SHOW DASHBOARD */
+/*
+========================================
+SHOW DASHBOARD
+========================================
+*/
 
 function showDashboard() {
 
-  loginPage.style.display = "none";
-  dashboard.style.display = "block";
+  loginPage.style.display =
+    "none";
+
+  dashboard.style.display =
+    "block";
 
   loadApplications();
+
 }
 
 
-/* LOGOUT */
+/*
+========================================
+LOGOUT
+========================================
+*/
 
-document.getElementById("logoutButton")
-.addEventListener("click", function() {
+document
+  .getElementById("logoutButton")
+  .addEventListener(
+    "click",
+    function() {
 
-  accessToken = null;
+      accessToken = null;
 
-  localStorage.removeItem(
-    "tc_admin_access_token"
+      localStorage.removeItem(
+        "tc_admin_access_token"
+      );
+
+      dashboard.style.display =
+        "none";
+
+      loginPage.style.display =
+        "flex";
+
+      loginForm.reset();
+
+    }
   );
 
-  dashboard.style.display = "none";
-  loginPage.style.display = "flex";
 
-  loginForm.reset();
-
-});
-
-
-/* LOAD APPLICATIONS */
+/*
+========================================
+LOAD APPLICATIONS
+========================================
+*/
 
 async function loadApplications() {
 
-  errorBox.style.display = "none";
+  errorBox.style.display =
+    "none";
+
 
   applicationsTable.innerHTML = `
+
     <tr>
-      <td colspan="6" class="loading">
+
+      <td
+        colspan="6"
+        class="loading"
+      >
+
         Loading applications...
+
       </td>
+
     </tr>
+
   `;
+
 
   try {
 
-    const response = await fetch(
-      SUPABASE_URL +
-      "/rest/v1/applications?select=*&order=created_at.desc",
-      {
-        method: "GET",
+    const response =
+      await fetch(
 
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": "Bearer " + accessToken
+        SUPABASE_URL +
+        "/rest/v1/applications?select=*&order=created_at.desc",
+
+        {
+
+          method:
+            "GET",
+
+          headers: {
+
+            "apikey":
+              SUPABASE_ANON_KEY,
+
+            "Authorization":
+              "Bearer " +
+              accessToken
+
+          }
+
         }
-      }
-    );
 
-    const text = await response.text();
+      );
+
+
+    const text =
+      await response.text();
+
 
     if (!response.ok) {
+
       throw new Error(text);
+
     }
 
-    allApplications = JSON.parse(text);
+
+    allApplications =
+      JSON.parse(text);
+
 
     updateStats();
-    displayApplications(allApplications);
 
-  } catch (error) {
+    displayApplications(
+      allApplications
+    );
+
+
+  }
+
+
+  catch (error) {
 
     console.error(error);
 
@@ -623,79 +1144,148 @@ async function loadApplications() {
       "Could not load applications: " +
       error.message;
 
-    errorBox.style.display = "block";
+    errorBox.style.display =
+      "block";
+
   }
 
 }
 
 
-/* STATS */
+/*
+========================================
+STATS
+========================================
+*/
 
 function updateStats() {
 
-  document.getElementById("total").textContent =
+  document.getElementById(
+    "total"
+  ).textContent =
     allApplications.length;
 
-  document.getElementById("pending").textContent =
+
+  document.getElementById(
+    "pending"
+  ).textContent =
     allApplications.filter(
-      app => app.status === "pending"
+      app =>
+        app.status === "pending"
     ).length;
 
-  document.getElementById("approved").textContent =
+
+  document.getElementById(
+    "approved"
+  ).textContent =
     allApplications.filter(
-      app => app.status === "approved"
+      app =>
+        app.status === "approved"
     ).length;
 
-  document.getElementById("rejected").textContent =
+
+  document.getElementById(
+    "rejected"
+  ).textContent =
     allApplications.filter(
-      app => app.status === "rejected"
+      app =>
+        app.status === "rejected"
     ).length;
+
 }
 
 
-/* DISPLAY APPLICATIONS */
+/*
+========================================
+DISPLAY APPLICATIONS
+========================================
+*/
 
-function displayApplications(applications) {
+function displayApplications(
+  applications
+) {
 
   if (!applications.length) {
 
     applicationsTable.innerHTML = `
+
       <tr>
-        <td colspan="6" class="loading">
+
+        <td
+          colspan="6"
+          class="loading"
+        >
+
           No applications found.
+
         </td>
+
       </tr>
+
     `;
 
     return;
+
   }
 
 
   applicationsTable.innerHTML =
-    applications.map(app => `
+
+    applications.map(
+      app => `
 
       <tr>
 
-        <td>${safe(app.ign)}</td>
-
-        <td>${safe(app.uid)}</td>
-
-        <td>${safe(app.player_role)}</td>
-
-        <td>${safe(app.player_rank)}</td>
-
         <td>
-          <span class="status ${safe(app.status)}">
-            ${safe(app.status)}
-          </span>
+          ${safe(app.ign)}
         </td>
 
+
         <td>
+          ${safe(app.uid)}
+        </td>
+
+
+        <td>
+          ${safe(app.player_role)}
+        </td>
+
+
+        <td>
+          ${safe(app.player_rank)}
+        </td>
+
+
+        <td>
+
+          <span
+            class="status ${safe(app.status)}"
+          >
+
+            ${safe(app.status)}
+
+          </span>
+
+        </td>
+
+
+        <td>
+
+          <button
+            class="action view"
+            onclick="viewApplication('${safe(app.application_id)}')"
+          >
+
+            👁 VIEW
+
+          </button>
+
 
           ${
             app.status === "pending"
 
             ? `
+
               <button
                 class="action approve"
                 onclick="updateStatus(
@@ -703,8 +1293,11 @@ function displayApplications(applications) {
                   'approved'
                 )"
               >
+
                 ✓
+
               </button>
+
 
               <button
                 class="action reject"
@@ -713,212 +1306,326 @@ function displayApplications(applications) {
                   'rejected'
                 )"
               >
+
                 ✕
+
               </button>
+
             `
 
-            : "—"
+            : ""
+
           }
 
         </td>
 
       </tr>
 
-    `).join("");
+    `
+    ).join("");
+
 }
 
 
-/* SEARCH */
+/*
+========================================
+VIEW FULL APPLICATION
+========================================
+*/
 
-document.getElementById("search")
-.addEventListener("input", function() {
-
-  const term =
-    this.value.toLowerCase().trim();
-
-  const filtered =
-    allApplications.filter(app =>
-
-      String(app.ign || "")
-        .toLowerCase()
-        .includes(term)
-
-      ||
-
-      String(app.uid || "")
-        .toLowerCase()
-        .includes(term)
-
-    );
-
-  displayApplications(filtered);
-
-});
-
-
-/* REFRESH */
-
-document.getElementById("refreshButton")
-.addEventListener(
-  "click",
-  loadApplications
-);
-
-
-/* APPROVE / REJECT */
-
-async function updateStatus(
-  applicationId,
-  newStatus
+function viewApplication(
+  applicationId
 ) {
 
-  const action =
-    newStatus === "approved"
-      ? "approve"
-      : "reject";
-
-
-  if (
-    !confirm(
-      "Are you sure you want to " +
-      action +
-      " this application?"
-    )
-  ) {
-    return;
-  }
-
-
-  try {
-
-    const response = await fetch(
-
-      SUPABASE_URL +
-      "/rest/v1/applications" +
-      "?application_id=eq." +
-      encodeURIComponent(applicationId),
-
-      {
-        method: "PATCH",
-
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
-
-          "Authorization":
-            "Bearer " + accessToken,
-
-          "Content-Type":
-            "application/json",
-
-          "Prefer":
-            "return=minimal"
-        },
-
-        body: JSON.stringify({
-          status: newStatus
-        })
-      }
-
+  selectedApplication =
+    allApplications.find(
+      app =>
+        String(app.application_id) ===
+        String(applicationId)
     );
 
 
-    const text =
-      await response.text();
-
-
-    if (!response.ok) {
-      throw new Error(text);
-    }
-
-
-    await loadApplications();
-
-  } catch (error) {
+  if (!selectedApplication) {
 
     alert(
-      "Could not update application:\n\n" +
-      error.message
+      "Application could not be found."
     );
+
+    return;
 
   }
 
-}
+
+  const app =
+    selectedApplication;
 
 
-/* SAFE TEXT */
+  applicationDetails.innerHTML = `
 
-function safe(value) {
+    <div
+      class="modal-status
+      ${safe(app.status)}"
+    >
+
+      STATUS:
+      ${safe(app.status).toUpperCase()}
+
+    </div>
+
+
+    ${detail(
+      "Application ID",
+      app.application_id
+    )}
+
+
+    ${detail(
+      "In-Game Name",
+      app.ign
+    )}
+
+
+    ${detail(
+      "Free Fire UID",
+      app.uid
+    )}
+
+
+    ${detail(
+      "Gender",
+      app.gender
+    )}
+
+
+    ${detail(
+      "WhatsApp / Contact",
+      app.contact
+    )}
+
+
+    ${detail(
+      "Main Role",
+      app.player_role
+    )}
+
+
+    ${detail(
+      "Current Rank",
+      app.player_rank
+    )}
+
+
+    ${detail(
+      "Headshot %",
+      app.headshot
+    )}
+
+
+    ${detail(
+      "BR / CS",
+      app.game_mode
+    )}
+
+
+    ${detail(
+      "Microphone",
+      app.microphone
+    )}
+
+
+    ${detail(
+      "Previous Guild / Team",
+      app.previous_guild
+    )}
+
+
+    <div class="detail">
+
+      <div class="detail-label">
+        Why do you want to join
+        THE ⚔ CONQUEROR?
+      </div>
+
+      <div
+        class="detail-value detail-reason"
+      >
+
+        ${safe(
+          app.reason ||
+          "No reason provided."
+        )}
+
+      </div>
+
+    </div>
+
+
+    ${detail(
+      "Submitted",
+      app.created_at
+        ? new Date(
+            app.created_at
+          ).toLocaleString()
+        : "Unknown"
+    )}
+
+  `;
+
 
   if (
-    value === null ||
-    value === undefined
+    app.status === "pending"
   ) {
-    return "";
+
+    modalActions.innerHTML = `
+
+      <button
+        class="modal-approve"
+        onclick="updateStatus(
+          '${safe(app.application_id)}',
+          'approved'
+        )"
+      >
+
+        ✓ APPROVE APPLICATION
+
+      </button>
+
+
+      <button
+        class="modal-reject"
+        onclick="updateStatus(
+          '${safe(app.application_id)}',
+          'rejected'
+        )"
+      >
+
+        ✕ REJECT APPLICATION
+
+      </button>
+
+    `;
+
   }
 
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+
+  else {
+
+    modalActions.innerHTML = `
+
+      <button
+        class="close-button"
+        onclick="closeApplication()"
+      >
+
+        CLOSE
+
+      </button>
+
+    `;
+
+  }
+
+
+  applicationModal.style.display =
+    "block";
+
+
+  document.body.style.overflow =
+    "hidden";
+
 }
 
 
-/* CHECK SAVED SESSION */
+/*
+========================================
+DETAIL HELPER
+========================================
+*/
 
-async function checkSession() {
+function detail(
+  label,
+  value
+) {
 
-  const savedToken =
-    localStorage.getItem(
-      "tc_admin_access_token"
-    );
+  return `
 
-  if (!savedToken) {
-    return;
-  }
+    <div class="detail">
 
-  accessToken = savedToken;
+      <div class="detail-label">
+        ${safe(label)}
+      </div>
 
-  try {
+      <div class="detail-value">
 
-    const response = await fetch(
-      SUPABASE_URL + "/auth/v1/user",
-      {
-        method: "GET",
+        ${
+          value !== null &&
+          value !== undefined &&
+          value !== ""
 
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
+            ? safe(value)
 
-          "Authorization":
-            "Bearer " + accessToken
+            : "Not provided"
+
         }
-      }
-    );
 
-    if (!response.ok) {
-      throw new Error("Session expired.");
-    }
+      </div>
 
-    showDashboard();
+    </div>
 
-  } catch (error) {
-
-    accessToken = null;
-
-    localStorage.removeItem(
-      "tc_admin_access_token"
-    );
-  }
+  `;
 
 }
 
 
-/* START */
+/*
+========================================
+CLOSE APPLICATION
+========================================
+*/
 
-checkSession();
+function closeApplication() {
 
-</script>
+  applicationModal.style.display =
+    "none";
 
-</body>
-</html>
+  document.body.style.overflow =
+    "";
+
+  selectedApplication =
+    null;
+
+}
+
+
+/*
+========================================
+SEARCH
+========================================
+*/
+
+document
+  .getElementById("search")
+  .addEventListener(
+    "input",
+    function() {
+
+      const term =
+        this.value
+          .toLowerCase()
+          .trim();
+
+
+      const filtered =
+        allApplications.filter(
+          app =>
+
+            String(
+              app.ign || ""
+            )
+            .toLowerCase()
+            .includes(term)
+
+            ||
+
+            String(
+              ap
