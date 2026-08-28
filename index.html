@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE ⚔ CONQUEROR | Admin</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #070707;
+  color: white;
+}
+
+/* LOGIN */
+
+#loginPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(circle, #4d1708 0%, #120806 45%, #070707 80%);
+}
+
+.login-box {
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  background: #101010;
+  border: 1px solid #292929;
+  border-radius: 15px;
+}
+
+.login-logo {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.login-logo h1 {
+  margin: 0;
+  color: #ff5b22;
+  font-size: 25px;
+}
+
+.login-logo p {
+  color: #888;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px;
+  background: #070707;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #ff541c;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.login-button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 14px;
+  background: #ff541c;
+  color: white;
+}
+
+.login-error {
+  display: none;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #3a0b0b;
+  color: #ff7777;
+}
+
+/* DASHBOARD */
+
+#dashboard {
+  display: none;
+}
+
+header {
+  padding: 20px;
+  background: #101010;
+  border-bottom: 1px solid #292929;
+}
+
+.header-inner {
+  width: 94%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  color: #ff5b22;
+}
+
+header p {
+  margin: 5px 0 0;
+  color: #888;
+}
+
+.logout {
+  padding: 11px 16px;
+  background: #333;
+  color: white;
+}
+
+.container {
+  width: 94%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 0;
+}
+
+#error {
+  display: none;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: #3a0b0b;
+  color: #ff7777;
+}
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat {
+  padding: 20px;
+  background: #101010;
+  border: 1px solid #292929;
+  border-radius: 12px;
+}
+
+.stat-title {
+  color: #888;
+  font-size: 12px;
+}
+
+.stat-number {
+  margin-top: 8px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ff652c;
+}
+
+/* SEARCH */
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search {
+  flex: 1;
+}
+
+.refresh {
+  padding: 12px 18px;
+  background: #ff541c;
+  color: white;
+}
+
+/* TABLE */
+
+.table-wrapper {
+  overflow-x: auto;
+  background: #101010;
+  border: 1px solid #292929;
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  min-width: 750px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #242424;
+}
+
+th {
+  color: #ff652c;
+}
+
+.status {
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.pending {
+  background: #4a3200;
+  color: #ffcc55;
+}
+
+.approved {
+  background: #063b1b;
+  color: #52e38b;
+}
+
+.rejected {
+  background: #430909;
+  color: #ff6969;
+}
+
+.action {
+  padding: 7px 10px;
+  margin-right: 4px;
+  color: white;
+}
+
+.approve {
+  background: #087f3d;
+}
+
+.reject {
+  background: #a71919;
+}
+
+.loading {
+  text-align: center;
+  color: #888;
+  padding: 30px;
+}
+
+@media (max-width: 700px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .header-inner {
+    gap: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+
+<section id="loginPage">
+
+  <div class="login-box">
+
+    <div class="login-logo">
+      <h1>THE ⚔ CONQUEROR</h1>
+      <p>Admin Dashboard</p>
+    </div>
+
+    <form id="loginForm">
+
+      <label>
+        Admin Email
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter admin email"
+          required
+        >
+      </label>
+
+      <label>
+        Password
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter password"
+          required
+        >
+      </label>
+
+      <button
+        type="submit"
+        class="login-button"
+        id="loginButton"
+      >
+        🔐 LOGIN
+      </button>
+
+      <div id="loginError" class="login-error"></div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard">
+
+<header>
+
+  <div class="header-inner">
+
+    <div>
+      <h1>THE ⚔ CONQUEROR</h1>
+      <p>Guild Recruitment Admin Dashboard</p>
+    </div>
+
+    <button class="logout" id="logoutButton">
+      LOGOUT
+    </button>
+
+  </div>
+
+</header>
+
+
+<div class="container">
+
+  <div id="error"></div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <div class="stat-title">TOTAL APPLICATIONS</div>
+      <div class="stat-number" id="total">0</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">PENDING</div>
+      <div class="stat-number" id="pending">0</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">APPROVED</div>
+      <div class="stat-number" id="approved">0</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">REJECTED</div>
+      <div class="stat-number" id="rejected">0</div>
+    </div>
+
+  </div>
+
+
+  <div class="toolbar">
+
+    <input
+      class="search"
+      id="search"
+      type="text"
+      placeholder="Search by IGN or UID..."
+    >
+
+    <button class="refresh" id="refreshButton">
+      🔄 REFRESH
+    </button>
+
+  </div>
+
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>IGN</th>
+          <th>UID</th>
+          <th>ROLE</th>
+          <th>RANK</th>
+          <th>STATUS</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+
+      <tbody id="applications">
+
+        <tr>
+          <td colspan="6" class="loading">
+            Loading applications...
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* SUPABASE CONFIG */
+
+const SUPABASE_URL =
+  "https://muyggfhblazjqoewrxth.supabase.co";
+
+const SUPABASE_ANON_KEY =
+  "sb_publishable_M_7Cb2GtvzQqLftmUJE_1Q_fXB1e3Ma";
+
+
+/* VARIABLES */
+
+let accessToken = null;
+let allApplications = [];
+
+
+/* ELEMENTS */
+
+const loginPage =
+  document.getElementById("loginPage");
+
+const dashboard =
+  document.getElementById("dashboard");
+
+const loginForm =
+  document.getElementById("loginForm");
+
+const loginButton =
+  document.getElementById("loginButton");
+
+const loginError =
+  document.getElementById("loginError");
+
+const applicationsTable =
+  document.getElementById("applications");
+
+const errorBox =
+  document.getElementById("error");
+
+
+/* LOGIN */
+
+loginForm.addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  loginError.style.display = "none";
+
+  loginButton.disabled = true;
+  loginButton.textContent = "LOGGING IN...";
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  try {
+
+    const response = await fetch(
+      SUPABASE_URL +
+      "/auth/v1/token?grant_type=password",
+      {
+        method: "POST",
+
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        result.error_description ||
+        result.msg ||
+        result.message ||
+        "Login failed."
+      );
+    }
+
+    accessToken = result.access_token;
+
+    localStorage.setItem(
+      "tc_admin_access_token",
+      accessToken
+    );
+
+    showDashboard();
+
+  } catch (error) {
+
+    console.error(error);
+
+    loginError.textContent = error.message;
+    loginError.style.display = "block";
+
+    loginButton.disabled = false;
+    loginButton.textContent = "🔐 LOGIN";
+  }
+
+});
+
+
+/* SHOW DASHBOARD */
+
+function showDashboard() {
+
+  loginPage.style.display = "none";
+  dashboard.style.display = "block";
+
+  loadApplications();
+}
+
+
+/* LOGOUT */
+
+document.getElementById("logoutButton")
+.addEventListener("click", function() {
+
+  accessToken = null;
+
+  localStorage.removeItem(
+    "tc_admin_access_token"
+  );
+
+  dashboard.style.display = "none";
+  loginPage.style.display = "flex";
+
+  loginForm.reset();
+
+});
+
+
+/* LOAD APPLICATIONS */
+
+async function loadApplications() {
+
+  errorBox.style.display = "none";
+
+  applicationsTable.innerHTML = `
+    <tr>
+      <td colspan="6" class="loading">
+        Loading applications...
+      </td>
+    </tr>
+  `;
+
+  try {
+
+    const response = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/applications?select=*&order=created_at.desc",
+      {
+        method: "GET",
+
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": "Bearer " + accessToken
+        }
+      }
+    );
+
+    const text = await response.text();
+
+    if (!response.ok) {
+      throw new Error(text);
+    }
+
+    allApplications = JSON.parse(text);
+
+    updateStats();
+    displayApplications(allApplications);
+
+  } catch (error) {
+
+    console.error(error);
+
+    errorBox.textContent =
+      "Could not load applications: " +
+      error.message;
+
+    errorBox.style.display = "block";
+  }
+
+}
+
+
+/* STATS */
+
+function updateStats() {
+
+  document.getElementById("total").textContent =
+    allApplications.length;
+
+  document.getElementById("pending").textContent =
+    allApplications.filter(
+      app => app.status === "pending"
+    ).length;
+
+  document.getElementById("approved").textContent =
+    allApplications.filter(
+      app => app.status === "approved"
+    ).length;
+
+  document.getElementById("rejected").textContent =
+    allApplications.filter(
+      app => app.status === "rejected"
+    ).length;
+}
+
+
+/* DISPLAY APPLICATIONS */
+
+function displayApplications(applications) {
+
+  if (!applications.length) {
+
+    applicationsTable.innerHTML = `
+      <tr>
+        <td colspan="6" class="loading">
+          No applications found.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+
+  applicationsTable.innerHTML =
+    applications.map(app => `
+
+      <tr>
+
+        <td>${safe(app.ign)}</td>
+
+        <td>${safe(app.uid)}</td>
+
+        <td>${safe(app.player_role)}</td>
+
+        <td>${safe(app.player_rank)}</td>
+
+        <td>
+          <span class="status ${safe(app.status)}">
+            ${safe(app.status)}
+          </span>
+        </td>
+
+        <td>
+
+          ${
+            app.status === "pending"
+
+            ? `
+              <button
+                class="action approve"
+                onclick="updateStatus(
+                  '${safe(app.application_id)}',
+                  'approved'
+                )"
+              >
+                ✓
+              </button>
+
+              <button
+                class="action reject"
+                onclick="updateStatus(
+                  '${safe(app.application_id)}',
+                  'rejected'
+                )"
+              >
+                ✕
+              </button>
+            `
+
+            : "—"
+          }
+
+        </td>
+
+      </tr>
+
+    `).join("");
+}
+
+
+/* SEARCH */
+
+document.getElementById("search")
+.addEventListener("input", function() {
+
+  const term =
+    this.value.toLowerCase().trim();
+
+  const filtered =
+    allApplications.filter(app =>
+
+      String(app.ign || "")
+        .toLowerCase()
+        .includes(term)
+
+      ||
+
+      String(app.uid || "")
+        .toLowerCase()
+        .includes(term)
+
+    );
+
+  displayApplications(filtered);
+
+});
+
+
+/* REFRESH */
+
+document.getElementById("refreshButton")
+.addEventListener(
+  "click",
+  loadApplications
+);
+
+
+/* APPROVE / REJECT */
+
+async function updateStatus(
+  applicationId,
+  newStatus
+) {
+
+  const action =
+    newStatus === "approved"
+      ? "approve"
+      : "reject";
+
+
+  if (
+    !confirm(
+      "Are you sure you want to " +
+      action +
+      " this application?"
+    )
+  ) {
+    return;
+  }
+
+
+  try {
+
+    const response = await fetch(
+
+      SUPABASE_URL +
+      "/rest/v1/applications" +
+      "?application_id=eq." +
+      encodeURIComponent(applicationId),
+
+      {
+        method: "PATCH",
+
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+
+          "Authorization":
+            "Bearer " + accessToken,
+
+          "Content-Type":
+            "application/json",
+
+          "Prefer":
+            "return=minimal"
+        },
+
+        body: JSON.stringify({
+          status: newStatus
+        })
+      }
+
+    );
+
+
+    const text =
+      await response.text();
+
+
+    if (!response.ok) {
+      throw new Error(text);
+    }
+
+
+    await loadApplications();
+
+  } catch (error) {
+
+    alert(
+      "Could not update application:\n\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* SAFE TEXT */
+
+function safe(value) {
+
+  if (
+    value === null ||
+    value === undefined
+  ) {
+    return "";
+  }
+
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+
+/* CHECK SAVED SESSION */
+
+async function checkSession() {
+
+  const savedToken =
+    localStorage.getItem(
+      "tc_admin_access_token"
+    );
+
+  if (!savedToken) {
+    return;
+  }
+
+  accessToken = savedToken;
+
+  try {
+
+    const response = await fetch(
+      SUPABASE_URL + "/auth/v1/user",
+      {
+        method: "GET",
+
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+
+          "Authorization":
+            "Bearer " + accessToken
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Session expired.");
+    }
+
+    showDashboard();
+
+  } catch (error) {
+
+    accessToken = null;
+
+    localStorage.removeItem(
+      "tc_admin_access_token"
+    );
+  }
+
+}
+
+
+/* START */
+
+checkSession();
+
+</script>
+
+</body>
+</html>
