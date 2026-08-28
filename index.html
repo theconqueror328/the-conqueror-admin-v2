@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>THE ⚔ CONQUEROR | Admin</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>THE ⚔ CONQUEROR | Admin</title><style>
 
 * {
   box-sizing: border-box;
@@ -20,9 +13,9 @@ body {
   color: white;
 }
 
-/* =========================
+/* ================================
    LOGIN
-========================= */
+================================ */
 
 #loginPage {
   min-height: 100vh;
@@ -117,9 +110,9 @@ button {
 }
 
 
-/* =========================
+/* ================================
    DASHBOARD
-========================= */
+================================ */
 
 #dashboard {
   display: none;
@@ -135,7 +128,6 @@ header {
 .header-inner {
   width: 94%;
   max-width: 1200px;
-
   margin: auto;
 
   display: flex;
@@ -155,7 +147,6 @@ header p {
 
 .logout {
   padding: 11px 16px;
-
   background: #333;
   color: white;
 }
@@ -163,7 +154,6 @@ header p {
 .container {
   width: 94%;
   max-width: 1200px;
-
   margin: auto;
   padding: 30px 0;
 }
@@ -178,19 +168,18 @@ header p {
 
   background: #3a0b0b;
   color: #ff7777;
+
+  word-break: break-word;
 }
 
 
-/* =========================
+/* ================================
    STATS
-========================= */
+================================ */
 
 .stats {
   display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
 
   margin-bottom: 25px;
@@ -200,7 +189,6 @@ header p {
   padding: 20px;
 
   background: #101010;
-
   border: 1px solid #292929;
   border-radius: 12px;
 }
@@ -220,9 +208,9 @@ header p {
 }
 
 
-/* =========================
+/* ================================
    SEARCH
-========================= */
+================================ */
 
 .toolbar {
   display: flex;
@@ -243,15 +231,14 @@ header p {
 }
 
 
-/* =========================
+/* ================================
    TABLE
-========================= */
+================================ */
 
 .table-wrapper {
   overflow-x: auto;
 
   background: #101010;
-
   border: 1px solid #292929;
   border-radius: 12px;
 }
@@ -275,9 +262,6 @@ td {
 th {
   color: #ff652c;
 }
-
-
-/* STATUS */
 
 .status {
   padding: 5px 9px;
@@ -304,9 +288,9 @@ th {
 }
 
 
-/* =========================
-   ACTION BUTTONS
-========================= */
+/* ================================
+   ACTIONS
+================================ */
 
 .action {
   padding: 7px 10px;
@@ -328,9 +312,9 @@ th {
 }
 
 
-/* =========================
+/* ================================
    MODAL
-========================= */
+================================ */
 
 #applicationModal {
   display: none;
@@ -338,7 +322,7 @@ th {
   position: fixed;
   inset: 0;
 
-  background: rgba(0,0,0,.88);
+  background: rgba(0, 0, 0, .88);
 
   z-index: 1000;
 
@@ -381,6 +365,7 @@ th {
 
 .modal-header h2 {
   margin: 0;
+
   color: #ff652c;
 }
 
@@ -430,12 +415,12 @@ th {
 }
 
 
-/* =========================
-   SCREENSHOT SECTION
-========================= */
+/* ================================
+   SCREENSHOT
+================================ */
 
 .screenshot-box {
-  margin: 25px 0;
+  margin: 20px 0;
   padding: 18px;
 
   background: #080808;
@@ -443,77 +428,26 @@ th {
   border: 1px solid #292929;
 
   border-radius: 12px;
+
+  text-align: center;
 }
 
-.screenshot-title {
-  margin-bottom: 15px;
+.screenshot-box h3 {
+  margin: 0 0 15px;
 
   color: #ff652c;
-
-  font-size: 17px;
-  font-weight: bold;
-}
-
-.screenshot-link-box {
-  padding: 12px;
-
-  background: #111;
-
-  border: 1px solid #333;
-
-  border-radius: 8px;
-
-  word-break: break-all;
-}
-
-.screenshot-link {
-  color: #ff8a5c;
-
-  text-decoration: underline;
-
-  font-size: 14px;
-}
-
-.screenshot-buttons {
-  display: flex;
-
-  gap: 10px;
-
-  margin-top: 15px;
-}
-
-.open-image {
-  flex: 1;
-
-  padding: 12px;
-
-  background: #ff541c;
-
-  color: white;
-}
-
-.copy-link {
-  flex: 1;
-
-  padding: 12px;
-
-  background: #333;
-
-  color: white;
 }
 
 .profile-image {
   display: block;
 
   width: 100%;
-
   max-width: 500px;
-
   max-height: 600px;
 
   object-fit: contain;
 
-  margin: 20px auto 0;
+  margin: auto;
 
   border-radius: 10px;
 
@@ -526,14 +460,78 @@ th {
   color: #ff7777;
 
   padding: 20px;
-
-  text-align: center;
 }
 
 
-/* =========================
+/* ================================
+   SCREENSHOT URL
+================================ */
+
+.screenshot-url-box {
+  margin-top: 18px;
+
+  padding: 15px;
+
+  background: #111;
+
+  border: 1px solid #333;
+
+  border-radius: 10px;
+
+  text-align: left;
+}
+
+.screenshot-url-label {
+  color: #ff652c;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  margin-bottom: 8px;
+}
+
+.screenshot-url {
+  display: block;
+
+  color: #ffb08c;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  word-break: break-all;
+
+  text-decoration: none;
+}
+
+.screenshot-url:hover {
+  color: #ff652c;
+  text-decoration: underline;
+}
+
+.open-image-button {
+  display: inline-block;
+
+  margin-top: 12px;
+
+  padding: 10px 14px;
+
+  background: #ff541c;
+
+  color: white;
+
+  border-radius: 7px;
+
+  text-decoration: none;
+
+  font-weight: bold;
+}
+
+
+/* ================================
    MODAL ACTIONS
-========================= */
+================================ */
 
 .modal-actions {
   display: flex;
@@ -561,10 +559,14 @@ th {
   background: #a71919;
 }
 
+.modal-close {
+  background: #333;
+}
 
-/* =========================
+
+/* ================================
    LOADING
-========================= */
+================================ */
 
 .loading {
   text-align: center;
@@ -575,9 +577,9 @@ th {
 }
 
 
-/* =========================
+/* ================================
    MOBILE
-========================= */
+================================ */
 
 @media(max-width:700px) {
 
@@ -601,343 +603,144 @@ th {
     padding: 18px;
   }
 
-  .screenshot-buttons {
-    flex-direction: column;
-  }
-
 }
 
-</style>
-
-</head>
-
-<body>
-
-
-<!-- =========================
+</style></head><body><!-- ================================
      LOGIN
-========================= -->
-
-<section id="loginPage">
-
-<div class="login-box">
-
-<div class="login-logo">
-
-<h1>
+================================ --><section id="loginPage"><div class="login-box"><div class="login-logo"><h1>
 THE ⚔ CONQUEROR
-</h1>
-
-<p>
+</h1><p>
 Admin Dashboard
-</p>
-
-</div>
-
-
-<form id="loginForm">
-
-<label>
-
-Admin Email
+</p></div><form id="loginForm"><label>Admin Email
 
 <input
 type="email"
 id="email"
 placeholder="Enter admin email"
 required
->
 
-</label>
+«»
 
-
-<label>
-
-Password
+</label><label>Password
 
 <input
 type="password"
 id="password"
 placeholder="Enter password"
 required
->
 
-</label>
+«»
 
-
-<button
+</label><button
 type="submit"
 class="login-button"
 id="loginButton"
->
+
+«»
 
 🔐 LOGIN
 
-</button>
-
-
-<div
+</button><div
 id="loginError"
 class="login-error"
-></div>
-
-</form>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
+></div></form></div></section><!-- ================================
      DASHBOARD
-========================= -->
-
-<section id="dashboard">
-
-<header>
-
-<div class="header-inner">
-
-<div>
-
-<h1>
+================================ --><section id="dashboard"><header><div class="header-inner"><div><h1>
 THE ⚔ CONQUEROR
-</h1>
-
-<p>
+</h1><p>
 Guild Recruitment Admin Dashboard
-</p>
-
-</div>
-
-
-<button
+</p></div><button
 class="logout"
 id="logoutButton"
->
+
+«»
 
 LOGOUT
 
-</button>
-
-</div>
-
-</header>
-
-
-
-<div class="container">
-
-<div id="error"></div>
-
-
-<!-- STATS -->
-
-<div class="stats">
-
-<div class="stat">
-
-<div class="stat-title">
+</button></div></header><div class="container"><div id="error"></div><!-- STATS --><div class="stats"><div class="stat"><div class="stat-title">
 TOTAL APPLICATIONS
-</div>
-
-<div
+</div><div
 class="stat-number"
 id="total"
 >
 0
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-title">
+</div></div><div class="stat"><div class="stat-title">
 PENDING
-</div>
-
-<div
+</div><div
 class="stat-number"
 id="pending"
 >
 0
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-title">
+</div></div><div class="stat"><div class="stat-title">
 APPROVED
-</div>
-
-<div
+</div><div
 class="stat-number"
 id="approved"
 >
 0
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-title">
+</div></div><div class="stat"><div class="stat-title">
 REJECTED
-</div>
-
-<div
+</div><div
 class="stat-number"
 id="rejected"
 >
 0
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- SEARCH -->
-
-<div class="toolbar">
-
-<input
+</div></div></div><!-- SEARCH --><div class="toolbar"><input
 class="search"
 id="search"
 type="text"
 placeholder="Search by IGN or UID..."
->
 
+«»
 
 <button
 class="refresh"
 id="refreshButton"
->
+
+«»
 
 🔄 REFRESH
 
-</button>
-
-</div>
-
-
-
-<!-- TABLE -->
-
-<div class="table-wrapper">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>IGN</th>
-
+</button></div><!-- TABLE --><div class="table-wrapper"><table><thead><tr><th>IGN</th>
 <th>UID</th>
-
 <th>ROLE</th>
-
 <th>RANK</th>
-
 <th>STATUS</th>
-
-<th>ACTION</th>
-
-</tr>
-
-</thead>
-
-
-<tbody id="applications">
-
-<tr>
-
-<td
+<th>ACTION</th></tr></thead><tbody id="applications"><tr><td
 colspan="6"
 class="loading"
->
+>Loading applications...
 
-Loading applications...
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
+</td></tr></tbody></table></div></div></section><!-- ================================
      APPLICATION MODAL
-========================= -->
-
-<div
+================================ --><div
 id="applicationModal"
->
-
-<div class="modal-box">
-
-
-<div class="modal-header">
-
-<h2>
+><div class="modal-box"><div class="modal-header"><h2>
 ⚔ APPLICATION DETAILS
-</h2>
-
-<button
+</h2><button
 class="close-button"
 onclick="closeApplication()"
->
+
+«»
 
 ✕
 
-</button>
-
-</div>
-
-
-<div
+</button></div><div
 class="modal-content"
 id="applicationDetails"
 >
-
-</div>
-
-
-<div
+</div><div
 class="modal-actions"
 id="modalActions"
 >
-
-</div>
-
-
-</div>
-
-</div>
+</div></div></div><script>
 
 
-
-<script>
-
-/* =========================
-   SUPABASE CONFIG
-========================= */
+/*
+========================================
+SUPABASE CONFIG
+========================================
+*/
 
 const SUPABASE_URL =
 "https://muyggfhblazjqoewrxth.supabase.co";
@@ -946,9 +749,11 @@ const SUPABASE_ANON_KEY =
 "sb_publishable_M_7Cb2GtvzQqLftmUJE_1Q_fXB1e3Ma";
 
 
-/* =========================
-   VARIABLES
-========================= */
+/*
+========================================
+VARIABLES
+========================================
+*/
 
 let accessToken = null;
 
@@ -957,9 +762,11 @@ let allApplications = [];
 let selectedApplication = null;
 
 
-/* =========================
-   ELEMENTS
-========================= */
+/*
+========================================
+ELEMENTS
+========================================
+*/
 
 const loginPage =
 document.getElementById("loginPage");
@@ -992,9 +799,11 @@ const modalActions =
 document.getElementById("modalActions");
 
 
-/* =========================
-   LOGIN
-========================= */
+/*
+========================================
+LOGIN
+========================================
+*/
 
 loginForm.addEventListener(
 "submit",
@@ -1018,8 +827,7 @@ document
 
 
 const password =
-document
-.getElementById("password")
+document.getElementById("password")
 .value;
 
 
@@ -1068,11 +876,8 @@ if (!response.ok) {
 throw new Error(
 
 result.error_description ||
-
 result.msg ||
-
 result.message ||
-
 "Login failed."
 
 );
@@ -1085,31 +890,32 @@ result.access_token;
 
 
 localStorage.setItem(
-
 "tc_admin_access_token",
-
 accessToken
-
 );
 
 
 showDashboard();
 
-}
 
+}
 
 catch(error) {
 
 console.error(error);
 
+
 loginError.textContent =
 error.message;
+
 
 loginError.style.display =
 "block";
 
+
 loginButton.disabled =
 false;
+
 
 loginButton.textContent =
 "🔐 LOGIN";
@@ -1119,9 +925,11 @@ loginButton.textContent =
 });
 
 
-/* =========================
-   SHOW DASHBOARD
-========================= */
+/*
+========================================
+SHOW DASHBOARD
+========================================
+*/
 
 function showDashboard() {
 
@@ -1136,9 +944,11 @@ loadApplications();
 }
 
 
-/* =========================
-   LOGOUT
-========================= */
+/*
+========================================
+LOGOUT
+========================================
+*/
 
 document
 .getElementById("logoutButton")
@@ -1164,9 +974,11 @@ loginForm.reset();
 );
 
 
-/* =========================
-   LOAD APPLICATIONS
-========================= */
+/*
+========================================
+LOAD APPLICATIONS
+========================================
+*/
 
 async function loadApplications() {
 
@@ -1178,10 +990,7 @@ applicationsTable.innerHTML = `
 
 <tr>
 
-<td
-colspan="6"
-class="loading"
->
+<td colspan="6" class="loading">
 
 Loading applications...
 
@@ -1210,8 +1019,7 @@ headers: {
 SUPABASE_ANON_KEY,
 
 "Authorization":
-"Bearer " +
-accessToken
+"Bearer " + accessToken
 
 }
 
@@ -1242,16 +1050,18 @@ displayApplications(
 allApplications
 );
 
-}
 
+}
 
 catch(error) {
 
 console.error(error);
 
+
 errorBox.textContent =
 "Could not load applications: " +
 error.message;
+
 
 errorBox.style.display =
 "block";
@@ -1261,9 +1071,11 @@ errorBox.style.display =
 }
 
 
-/* =========================
-   STATS
-========================= */
+/*
+========================================
+STATS
+========================================
+*/
 
 function updateStats() {
 
@@ -1275,33 +1087,39 @@ allApplications.length;
 document.getElementById("pending")
 .textContent =
 allApplications.filter(
-app => app.status === "pending"
+app =>
+app.status === "pending"
 ).length;
 
 
 document.getElementById("approved")
 .textContent =
 allApplications.filter(
-app => app.status === "approved"
+app =>
+app.status === "approved"
 ).length;
 
 
 document.getElementById("rejected")
 .textContent =
 allApplications.filter(
-app => app.status === "rejected"
+app =>
+app.status === "rejected"
 ).length;
 
 }
 
 
-/* =========================
-   DISPLAY TABLE
-========================= */
+/*
+========================================
+DISPLAY APPLICATIONS
+========================================
+*/
 
 function displayApplications(
 applications
 ) {
+
 
 if (!applications.length) {
 
@@ -1328,7 +1146,6 @@ return;
 
 
 applicationsTable.innerHTML =
-
 applications.map(
 app => `
 
@@ -1381,10 +1198,7 @@ app.status === "pending"
 
 <button
 class="action approve"
-onclick="updateStatus(
-'${safe(app.application_id)}',
-'approved'
-)"
+onclick="updateStatus('${safe(app.application_id)}','approved')"
 >
 
 ✓
@@ -1394,10 +1208,7 @@ onclick="updateStatus(
 
 <button
 class="action reject"
-onclick="updateStatus(
-'${safe(app.application_id)}',
-'rejected'
-)"
+onclick="updateStatus('${safe(app.application_id)}','rejected')"
 >
 
 ✕
@@ -1415,27 +1226,27 @@ onclick="updateStatus(
 </tr>
 
 `
-)
-.join("");
+).join("");
 
 }
 
 
-/* =========================
-   VIEW APPLICATION
-========================= */
+/*
+========================================
+VIEW FULL APPLICATION
+========================================
+*/
 
 function viewApplication(
 applicationId
 ) {
 
+
 selectedApplication =
 allApplications.find(
-
 app =>
 String(app.application_id) ===
 String(applicationId)
-
 );
 
 
@@ -1454,96 +1265,110 @@ const app =
 selectedApplication;
 
 
-/* =========================
-   SCREENSHOT
-========================= */
+/*
+========================================
+GET SCREENSHOT URL
+========================================
+
+IMPORTANT:
+
+Your tryout form saves:
+
+profile_screenshot
+
+So we use that first.
+
+profile_screenshot_url is also
+supported as a backup.
+========================================
+*/
+
+const screenshotUrl =
+app.profile_screenshot ||
+app.profile_screenshot_url ||
+"";
+
+
+/*
+========================================
+SCREENSHOT HTML
+========================================
+*/
 
 let screenshotHTML = "";
 
 
-if (
-app.profile_screenshot_url &&
-String(app.profile_screenshot_url).trim() !== ""
-) {
-
-const screenshotURL =
-String(
-app.profile_screenshot_url
-).trim();
-
+if (screenshotUrl) {
 
 screenshotHTML = `
 
 <div class="screenshot-box">
 
-<div class="screenshot-title">
-
+<h3>
 📸 FREE FIRE PROFILE SCREENSHOT
-
-</div>
-
-
-<div class="screenshot-link-box">
-
-<a
-href="${safe(screenshotURL)}"
-target="_blank"
-rel="noopener noreferrer"
-class="screenshot-link"
->
-
-${safe(screenshotURL)}
-
-</a>
-
-</div>
-
-
-<div class="screenshot-buttons">
-
-<button
-class="open-image"
-onclick="openScreenshot()"
->
-
-🖼️ VIEW IMAGE
-
-</button>
-
-
-<button
-class="copy-link"
-onclick="copyScreenshotLink()"
->
-
-📋 COPY LINK
-
-</button>
-
-</div>
+</h3>
 
 
 <img
-src="${safe(screenshotURL)}"
+src="${safe(screenshotUrl)}"
 class="profile-image"
 alt="Free Fire profile screenshot"
 
 onerror="
 this.style.display='none';
-document.getElementById('imageLoadError').style.display='block';
+this.nextElementSibling.style.display='block';
 "
 >
 
 
 <div
-id="imageLoadError"
 class="image-error"
 style="display:none;"
 >
 
-⚠️ The image could not be displayed here.
+⚠️ Unable to load the profile screenshot.
 
-The link above is still available.
+<br><br>
+
+The URL is still available below.
+
+</div>
+
+
+<!-- ACTUAL URL -->
+
+<div class="screenshot-url-box">
+
+<div class="screenshot-url-label">
+
+🔗 SCREENSHOT URL
+
+</div>
+
+
+<a
+href="${safe(screenshotUrl)}"
+target="_blank"
+rel="noopener noreferrer"
+class="screenshot-url"
+>
+
+${safe(screenshotUrl)}
+
+</a>
+
+
+<a
+href="${safe(screenshotUrl)}"
+target="_blank"
+rel="noopener noreferrer"
+class="open-image-button"
+>
+
+🖼️ OPEN IMAGE
+
+</a>
+
 
 </div>
 
@@ -1553,6 +1378,7 @@ The link above is still available.
 `;
 
 }
+
 
 else {
 
@@ -1560,19 +1386,18 @@ screenshotHTML = `
 
 <div class="screenshot-box">
 
-<div class="screenshot-title">
-
+<h3>
 📸 FREE FIRE PROFILE SCREENSHOT
-
-</div>
+</h3>
 
 
 <div class="image-error">
 
-No profile screenshot link was saved
-for this application.
+No profile screenshot URL was saved
+with this application.
 
 </div>
+
 
 </div>
 
@@ -1581,9 +1406,11 @@ for this application.
 }
 
 
-/* =========================
-   APPLICATION DETAILS
-========================= */
+/*
+========================================
+APPLICATION DETAILS
+========================================
+*/
 
 applicationDetails.innerHTML = `
 
@@ -1703,20 +1530,20 @@ app.reason ||
 ${detail(
 "Submitted",
 app.created_at
-?
-new Date(
+? new Date(
 app.created_at
 ).toLocaleString()
-:
-"Unknown"
+: "Unknown"
 )}
 
 `;
 
 
-/* =========================
-   MODAL ACTIONS
-========================= */
+/*
+========================================
+MODAL ACTIONS
+========================================
+*/
 
 if (
 app.status === "pending"
@@ -1758,7 +1585,7 @@ else {
 modalActions.innerHTML = `
 
 <button
-class="close-button"
+class="modal-close"
 onclick="closeApplication()"
 >
 
@@ -1774,77 +1601,18 @@ CLOSE
 applicationModal.style.display =
 "block";
 
+
 document.body.style.overflow =
 "hidden";
 
 }
 
 
-/* =========================
-   OPEN SCREENSHOT
-========================= */
-
-function openScreenshot() {
-
-if (
-selectedApplication &&
-selectedApplication.profile_screenshot_url
-) {
-
-window.open(
-selectedApplication.profile_screenshot_url,
-"_blank"
-);
-
-}
-
-}
-
-
-/* =========================
-   COPY SCREENSHOT LINK
-========================= */
-
-async function copyScreenshotLink() {
-
-if (
-!selectedApplication ||
-!selectedApplication.profile_screenshot_url
-) {
-
-return;
-
-}
-
-
-try {
-
-await navigator.clipboard.writeText(
-
-selectedApplication.profile_screenshot_url
-
-);
-
-alert(
-"Screenshot link copied!"
-);
-
-}
-
-catch(error) {
-
-alert(
-"Could not copy the screenshot link."
-);
-
-}
-
-}
-
-
-/* =========================
-   DETAIL HELPER
-========================= */
+/*
+========================================
+DETAIL HELPER
+========================================
+*/
 
 function detail(
 label,
@@ -1883,9 +1651,11 @@ value !== ""
 }
 
 
-/* =========================
-   CLOSE MODAL
-========================= */
+/*
+========================================
+CLOSE APPLICATION
+========================================
+*/
 
 function closeApplication() {
 
@@ -1895,21 +1665,23 @@ applicationModal.style.display =
 document.body.style.overflow =
 "";
 
-selectedApplication =
-null;
+selectedApplication = null;
 
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/*
+========================================
+SEARCH
+========================================
+*/
 
 document
 .getElementById("search")
 .addEventListener(
 "input",
 function() {
+
 
 const term =
 this.value
@@ -1948,9 +1720,11 @@ filtered
 );
 
 
-/* =========================
-   REFRESH
-========================= */
+/*
+========================================
+REFRESH
+========================================
+*/
 
 document
 .getElementById("refreshButton")
@@ -1960,14 +1734,17 @@ loadApplications
 );
 
 
-/* =========================
-   APPROVE / REJECT
-========================= */
+/*
+========================================
+APPROVE / REJECT
+========================================
+*/
 
 async function updateStatus(
 applicationId,
 newStatus
 ) {
+
 
 const action =
 newStatus === "approved"
@@ -1989,6 +1766,7 @@ return;
 
 
 try {
+
 
 const response =
 await fetch(
@@ -2050,8 +1828,8 @@ closeApplication();
 
 await loadApplications();
 
-}
 
+}
 
 catch(error) {
 
@@ -2065,9 +1843,11 @@ error.message
 }
 
 
-/* =========================
-   SAFE TEXT
-========================= */
+/*
+========================================
+SAFE TEXT
+========================================
+*/
 
 function safe(value) {
 
@@ -2111,11 +1891,14 @@ return String(value)
 }
 
 
-/* =========================
-   CHECK SESSION
-========================= */
+/*
+========================================
+CHECK SAVED SESSION
+========================================
+*/
 
 async function checkSession() {
+
 
 const savedToken =
 localStorage.getItem(
@@ -2135,6 +1918,7 @@ savedToken;
 
 
 try {
+
 
 const response =
 await fetch(
@@ -2173,13 +1957,12 @@ throw new Error(
 
 showDashboard();
 
-}
 
+}
 
 catch(error) {
 
-accessToken =
-null;
+accessToken = null;
 
 localStorage.removeItem(
 "tc_admin_access_token"
@@ -2190,13 +1973,16 @@ localStorage.removeItem(
 }
 
 
-/* =========================
-   CLOSE MODAL OUTSIDE
-========================= */
+/*
+========================================
+CLOSE MODAL OUTSIDE
+========================================
+*/
 
 applicationModal.addEventListener(
 "click",
 function(event) {
+
 
 if (
 event.target ===
@@ -2207,16 +1993,17 @@ closeApplication();
 
 }
 
-});
+}
+);
 
 
-/* =========================
-   START
-========================= */
+/*
+========================================
+START
+========================================
+*/
 
 checkSession();
 
-</script>
-
-</body>
+</script></body>
 </html>
