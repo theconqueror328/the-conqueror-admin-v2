@@ -8,884 +8,719 @@
 <title>THE ⚔ CONQUEROR | Admin</title>
 
 <style>
+*{box-sizing:border-box}
 
-* {
-  box-sizing: border-box;
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#070707;
+  color:white;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #070707;
-  color: white;
+/* ================= LOGIN ================= */
+
+#loginPage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:radial-gradient(circle,#4d1708 0%,#120806 45%,#070707 80%);
 }
 
-/* ================================
-   LOGIN
-================================ */
-
-#loginPage {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-
-  background:
-    radial-gradient(
-      circle,
-      #4d1708 0%,
-      #120806 45%,
-      #070707 80%
-    );
+.login-box{
+  width:100%;
+  max-width:420px;
+  padding:30px;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:15px;
 }
 
-.login-box {
-  width: 100%;
-  max-width: 420px;
-  padding: 30px;
-  background: #101010;
-  border: 1px solid #292929;
-  border-radius: 15px;
+.login-logo{
+  text-align:center;
+  margin-bottom:25px;
 }
 
-.login-logo {
-  text-align: center;
-  margin-bottom: 25px;
+.login-logo h1{
+  margin:0;
+  color:#ff5b22;
+  font-size:25px;
 }
 
-.login-logo h1 {
-  margin: 0;
-  color: #ff5b22;
-  font-size: 25px;
+.login-logo p{
+  color:#888;
 }
 
-.login-logo p {
-  color: #888;
+label{
+  display:block;
+  margin-top:18px;
+  font-weight:bold;
 }
 
-label {
-  display: block;
-  margin-top: 18px;
-  font-weight: bold;
+input{
+  width:100%;
+  margin-top:8px;
+  padding:14px;
+  background:#070707;
+  color:white;
+  border:1px solid #333;
+  border-radius:8px;
+  outline:none;
 }
 
-input {
-  width: 100%;
-  margin-top: 8px;
-  padding: 14px;
-  background: #070707;
-  color: white;
-  border: 1px solid #333;
-  border-radius: 8px;
-  outline: none;
+input:focus{
+  border-color:#ff541c;
 }
 
-input:focus {
-  border-color: #ff541c;
+button{
+  cursor:pointer;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
+.login-button{
+  width:100%;
+  margin-top:22px;
+  padding:14px;
+  background:#ff541c;
+  color:white;
 }
 
-.login-button {
-  width: 100%;
-  margin-top: 22px;
-  padding: 14px;
-  background: #ff541c;
-  color: white;
+.login-error{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  border-radius:8px;
+  background:#3a0b0b;
+  color:#ff7777;
 }
 
-.login-error {
-  display: none;
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 8px;
-  background: #3a0b0b;
-  color: #ff7777;
+/* ================= DASHBOARD ================= */
+
+#dashboard{
+  display:none;
 }
 
-/* ================================
-   DASHBOARD
-================================ */
-
-#dashboard {
-  display: none;
+header{
+  padding:20px;
+  background:#101010;
+  border-bottom:1px solid #292929;
 }
 
-header {
-  padding: 20px;
-  background: #101010;
-  border-bottom: 1px solid #292929;
+.header-inner{
+  width:94%;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.header-inner {
-  width: 94%;
-  max-width: 1200px;
-  margin: auto;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header h1{
+  margin:0;
+  color:#ff5b22;
 }
 
-header h1 {
-  margin: 0;
-  color: #ff5b22;
+header p{
+  margin:5px 0 0;
+  color:#888;
 }
 
-header p {
-  margin: 5px 0 0;
-  color: #888;
+.logout{
+  padding:11px 16px;
+  background:#333;
+  color:white;
 }
 
-.logout {
-  padding: 11px 16px;
-  background: #333;
-  color: white;
+.container{
+  width:94%;
+  max-width:1200px;
+  margin:auto;
+  padding:30px 0;
 }
 
-.container {
-  width: 94%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 30px 0;
+#error{
+  display:none;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:8px;
+  background:#3a0b0b;
+  color:#ff7777;
 }
 
-#error {
-  display: none;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  background: #3a0b0b;
-  color: #ff7777;
+/* ================= STATS ================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
 }
 
-/* ================================
-   STATS
-================================ */
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin-bottom: 25px;
+.stat{
+  padding:20px;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:12px;
 }
 
-.stat {
-  padding: 20px;
-  background: #101010;
-  border: 1px solid #292929;
-  border-radius: 12px;
+.stat-title{
+  color:#888;
+  font-size:12px;
 }
 
-.stat-title {
-  color: #888;
-  font-size: 12px;
+.stat-number{
+  margin-top:8px;
+  font-size:30px;
+  font-weight:bold;
+  color:#ff652c;
 }
 
-.stat-number {
-  margin-top: 8px;
-  font-size: 30px;
-  font-weight: bold;
-  color: #ff652c;
+/* ================= SEARCH ================= */
+
+.toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
 }
 
-/* ================================
-   SEARCH
-================================ */
-
-.toolbar {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.search{
+  flex:1;
 }
 
-.search {
-  flex: 1;
+.refresh{
+  padding:12px 18px;
+  background:#ff541c;
+  color:white;
 }
 
-.refresh {
-  padding: 12px 18px;
-  background: #ff541c;
-  color: white;
+/* ================= TABLE ================= */
+
+.table-wrapper{
+  overflow-x:auto;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:12px;
 }
 
-/* ================================
-   TABLE
-================================ */
-
-.table-wrapper {
-  overflow-x: auto;
-  background: #101010;
-  border: 1px solid #292929;
-  border-radius: 12px;
-}
-
-table {
-  width: 100%;
-  min-width: 800px;
-  border-collapse: collapse;
+table{
+  width:100%;
+  min-width:800px;
+  border-collapse:collapse;
 }
 
 th,
-td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #242424;
+td{
+  padding:15px;
+  text-align:left;
+  border-bottom:1px solid #242424;
 }
 
-th {
-  color: #ff652c;
+th{
+  color:#ff652c;
 }
 
-/* ================================
-   STATUS
-================================ */
-
-.status {
-  padding: 5px 9px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: bold;
+.status{
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
 }
 
-.pending {
-  background: #4a3200;
-  color: #ffcc55;
+.pending{
+  background:#4a3200;
+  color:#ffcc55;
 }
 
-.approved {
-  background: #063b1b;
-  color: #52e38b;
+.approved{
+  background:#063b1b;
+  color:#52e38b;
 }
 
-.rejected {
-  background: #430909;
-  color: #ff6969;
+.rejected{
+  background:#430909;
+  color:#ff6969;
 }
 
-/* ================================
-   ACTIONS
-================================ */
+/* ================= ACTIONS ================= */
 
-.action {
-  padding: 7px 10px;
-  margin-right: 4px;
-  color: white;
+.action{
+  padding:7px 10px;
+  margin-right:4px;
+  color:white;
 }
 
-.view {
-  background: #444;
+.view{
+  background:#444;
 }
 
-.approve {
-  background: #087f3d;
+.approve{
+  background:#087f3d;
 }
 
-.reject {
-  background: #a71919;
+.reject{
+  background:#a71919;
 }
 
-/* ================================
-   APPLICATION MODAL
-================================ */
+/* ================= MODAL ================= */
 
-#applicationModal {
-  display: none;
-
-  position: fixed;
-  inset: 0;
-
-  background: rgba(0, 0, 0, 0.88);
-
-  z-index: 1000;
-
-  padding: 20px;
-
-  overflow-y: auto;
+#applicationModal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.88);
+  z-index:1000;
+  padding:20px;
+  overflow-y:auto;
 }
 
-.modal-box {
-  width: 100%;
-  max-width: 760px;
-
-  margin: 30px auto;
-
-  background: #101010;
-
-  border: 1px solid #333;
-
-  border-radius: 15px;
-
-  overflow: hidden;
+.modal-box{
+  width:100%;
+  max-width:760px;
+  margin:30px auto;
+  background:#101010;
+  border:1px solid #333;
+  border-radius:15px;
+  overflow:hidden;
 }
 
-.modal-header {
-  padding: 20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #351006,
-      #101010
-    );
-
-  border-bottom: 1px solid #292929;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.modal-header{
+  padding:20px;
+  background:linear-gradient(135deg,#351006,#101010);
+  border-bottom:1px solid #292929;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.modal-header h2 {
-  margin: 0;
-  color: #ff652c;
+.modal-header h2{
+  margin:0;
+  color:#ff652c;
 }
 
-.close-button {
-  background: #333;
-  color: white;
-  padding: 9px 13px;
+.close-button{
+  background:#333;
+  color:white;
+  padding:9px 13px;
 }
 
-.modal-content {
-  padding: 25px;
+.modal-content{
+  padding:25px;
 }
 
-.detail {
-  padding: 15px 0;
-  border-bottom: 1px solid #252525;
+.detail{
+  padding:15px 0;
+  border-bottom:1px solid #252525;
 }
 
-.detail:last-child {
-  border-bottom: none;
+.detail:last-child{
+  border-bottom:none;
 }
 
-.detail-label {
-  color: #888;
-  font-size: 12px;
-  margin-bottom: 5px;
-  text-transform: uppercase;
+.detail-label{
+  color:#888;
+  font-size:12px;
+  margin-bottom:5px;
+  text-transform:uppercase;
 }
 
-.detail-value {
-  color: white;
-  font-size: 16px;
-  word-break: break-word;
+.detail-value{
+  color:white;
+  font-size:16px;
+  word-break:break-word;
 }
 
-.detail-reason {
-  white-space: pre-wrap;
-  line-height: 1.6;
+.detail-reason{
+  white-space:pre-wrap;
+  line-height:1.6;
 }
 
-/* ================================
-   SCREENSHOT
-================================ */
+/* ================= SCREENSHOT ================= */
 
-.screenshot-box {
-  margin: 20px 0;
-  padding: 18px;
-
-  background: #080808;
-
-  border: 1px solid #292929;
-
-  border-radius: 12px;
-
-  text-align: center;
+.screenshot-box{
+  margin:25px 0;
+  padding:18px;
+  background:#080808;
+  border:1px solid #292929;
+  border-radius:12px;
+  text-align:center;
 }
 
-.screenshot-box h3 {
-  margin: 0 0 15px;
-
-  color: #ff652c;
+.screenshot-box h3{
+  margin:0 0 15px;
+  color:#ff652c;
 }
 
-.profile-image {
-  display: block;
-
-  width: 100%;
-  max-width: 500px;
-  max-height: 600px;
-
-  object-fit: contain;
-
-  margin: auto;
-
-  border-radius: 10px;
-
-  border: 1px solid #333;
-
-  background: #000;
-
-  cursor: zoom-in;
+.profile-image{
+  display:block;
+  width:100%;
+  max-width:500px;
+  max-height:700px;
+  object-fit:contain;
+  margin:auto;
+  border-radius:10px;
+  border:1px solid #333;
+  background:#000;
 }
 
-.image-error {
-  color: #ff7777;
-  padding: 20px;
+.image-error{
+  color:#ff7777;
+  padding:20px;
 }
 
-/* ================================
-   MODAL ACTIONS
-================================ */
-
-.modal-actions {
-  display: flex;
-
-  gap: 10px;
-
-  padding: 20px 25px;
-
-  border-top: 1px solid #292929;
+.image-url{
+  margin-top:12px;
+  font-size:11px;
+  color:#666;
+  word-break:break-all;
 }
 
-.modal-actions button {
-  flex: 1;
+/* ================= MODAL ACTIONS ================= */
 
-  padding: 13px;
-
-  color: white;
+.modal-actions{
+  display:flex;
+  gap:10px;
+  padding:20px 25px;
+  border-top:1px solid #292929;
 }
 
-.modal-approve {
-  background: #087f3d;
+.modal-actions button{
+  flex:1;
+  padding:13px;
+  color:white;
 }
 
-.modal-reject {
-  background: #a71919;
+.modal-approve{
+  background:#087f3d;
 }
 
-.modal-status {
-  text-align: center;
-
-  padding: 12px;
-
-  border-radius: 8px;
-
-  margin-bottom: 15px;
+.modal-reject{
+  background:#a71919;
 }
 
-.loading {
-  text-align: center;
-
-  color: #888;
-
-  padding: 30px;
+.modal-status{
+  text-align:center;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
 }
 
-/* ================================
-   SCREENSHOT FULLSCREEN VIEWER
-================================ */
-
-#screenshotViewer {
-  display: none;
-
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 2000;
-
-  background: rgba(0, 0, 0, 0.96);
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 20px;
+.loading{
+  text-align:center;
+  color:#888;
+  padding:30px;
 }
 
-#screenshotViewer img {
-  max-width: 100%;
+/* ================= MOBILE ================= */
 
-  max-height: 92vh;
+@media(max-width:700px){
 
-  object-fit: contain;
-
-  border-radius: 10px;
-}
-
-.viewer-close {
-  position: absolute;
-
-  top: 20px;
-
-  right: 20px;
-
-  background: #333;
-
-  color: white;
-
-  padding: 10px 15px;
-
-  font-size: 18px;
-}
-
-@media (max-width: 700px) {
-
-  .stats {
-    grid-template-columns: 1fr 1fr;
+  .stats{
+    grid-template-columns:1fr 1fr;
   }
 
-  .toolbar {
-    flex-direction: column;
+  .toolbar{
+    flex-direction:column;
   }
 
-  .header-inner {
-    gap: 15px;
+  .header-inner{
+    gap:15px;
   }
 
-  .modal-actions {
-    flex-direction: column;
+  .modal-actions{
+    flex-direction:column;
   }
 
-  .modal-content {
-    padding: 18px;
+  .modal-content{
+    padding:18px;
   }
 
 }
-
 </style>
 
 </head>
 
 <body>
 
-
-<!-- ================================
-     LOGIN
-================================ -->
+<!-- ================= LOGIN ================= -->
 
 <section id="loginPage">
 
-  <div class="login-box">
+<div class="login-box">
 
-    <div class="login-logo">
+<div class="login-logo">
 
-      <h1>
-        THE ⚔ CONQUEROR
-      </h1>
+<h1>THE ⚔ CONQUEROR</h1>
 
-      <p>
-        Admin Dashboard
-      </p>
+<p>Admin Dashboard</p>
 
-    </div>
+</div>
 
+<form id="loginForm">
 
-    <form id="loginForm">
+<label>
 
-      <label>
+Admin Email
 
-        Admin Email
+<input
+type="email"
+id="email"
+placeholder="Enter admin email"
+required
+>
 
-        <input
-          type="email"
-          id="email"
-          placeholder="Enter admin email"
-          required
-        >
+</label>
 
-      </label>
+<label>
 
+Password
 
-      <label>
+<input
+type="password"
+id="password"
+placeholder="Enter password"
+required
+>
 
-        Password
+</label>
 
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter password"
-          required
-        >
+<button
+type="submit"
+class="login-button"
+id="loginButton"
+>
 
-      </label>
+🔐 LOGIN
 
+</button>
 
-      <button
-        type="submit"
-        class="login-button"
-        id="loginButton"
-      >
+<div
+id="loginError"
+class="login-error"
+></div>
 
-        🔐 LOGIN
+</form>
 
-      </button>
-
-
-      <div
-        id="loginError"
-        class="login-error"
-      ></div>
-
-    </form>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- ================================
-     DASHBOARD
-================================ -->
+<!-- ================= DASHBOARD ================= -->
 
 <section id="dashboard">
 
 <header>
 
-  <div class="header-inner">
+<div class="header-inner">
 
-    <div>
+<div>
 
-      <h1>
-        THE ⚔ CONQUEROR
-      </h1>
+<h1>THE ⚔ CONQUEROR</h1>
 
-      <p>
-        Guild Recruitment Admin Dashboard
-      </p>
+<p>Guild Recruitment Admin Dashboard</p>
 
-    </div>
+</div>
 
+<button
+class="logout"
+id="logoutButton"
+>
 
-    <button
-      class="logout"
-      id="logoutButton"
-    >
+LOGOUT
 
-      LOGOUT
+</button>
 
-    </button>
-
-  </div>
+</div>
 
 </header>
 
 
 <div class="container">
 
-  <div id="error"></div>
+<div id="error"></div>
 
 
-  <!-- STATS -->
+<!-- STATS -->
 
-  <div class="stats">
+<div class="stats">
 
-    <div class="stat">
+<div class="stat">
 
-      <div class="stat-title">
-        TOTAL APPLICATIONS
-      </div>
+<div class="stat-title">
+TOTAL APPLICATIONS
+</div>
 
-      <div
-        class="stat-number"
-        id="total"
-      >
-        0
-      </div>
+<div
+class="stat-number"
+id="total"
+>
+0
+</div>
 
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-title">
-        PENDING
-      </div>
-
-      <div
-        class="stat-number"
-        id="pending"
-      >
-        0
-      </div>
-
-    </div>
+</div>
 
 
-    <div class="stat">
+<div class="stat">
 
-      <div class="stat-title">
-        APPROVED
-      </div>
+<div class="stat-title">
+PENDING
+</div>
 
-      <div
-        class="stat-number"
-        id="approved"
-      >
-        0
-      </div>
+<div
+class="stat-number"
+id="pending"
+>
+0
+</div>
 
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-title">
-        REJECTED
-      </div>
-
-      <div
-        class="stat-number"
-        id="rejected"
-      >
-        0
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 
-  <!-- SEARCH -->
+<div class="stat">
 
-  <div class="toolbar">
+<div class="stat-title">
+APPROVED
+</div>
 
-    <input
-      class="search"
-      id="search"
-      type="text"
-      placeholder="Search by IGN or UID..."
-    >
+<div
+class="stat-number"
+id="approved"
+>
+0
+</div>
 
-
-    <button
-      class="refresh"
-      id="refreshButton"
-    >
-
-      🔄 REFRESH
-
-    </button>
-
-  </div>
+</div>
 
 
-  <!-- TABLE -->
+<div class="stat">
 
-  <div class="table-wrapper">
+<div class="stat-title">
+REJECTED
+</div>
 
-    <table>
+<div
+class="stat-number"
+id="rejected"
+>
+0
+</div>
 
-      <thead>
+</div>
 
-        <tr>
-
-          <th>IGN</th>
-
-          <th>UID</th>
-
-          <th>ROLE</th>
-
-          <th>RANK</th>
-
-          <th>STATUS</th>
-
-          <th>ACTION</th>
-
-        </tr>
-
-      </thead>
+</div>
 
 
-      <tbody id="applications">
+<!-- SEARCH -->
 
-        <tr>
+<div class="toolbar">
 
-          <td
-            colspan="6"
-            class="loading"
-          >
+<input
+class="search"
+id="search"
+type="text"
+placeholder="Search by IGN or UID..."
+>
 
-            Loading applications...
+<button
+class="refresh"
+id="refreshButton"
+>
 
-          </td>
+🔄 REFRESH
 
-        </tr>
+</button>
 
-      </tbody>
+</div>
 
-    </table>
 
-  </div>
+<!-- TABLE -->
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>IGN</th>
+<th>UID</th>
+<th>ROLE</th>
+<th>RANK</th>
+<th>STATUS</th>
+<th>ACTION</th>
+
+</tr>
+
+</thead>
+
+<tbody id="applications">
+
+<tr>
+
+<td
+colspan="6"
+class="loading"
+>
+
+Loading applications...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- ================================
-     APPLICATION MODAL
-================================ -->
+<!-- ================= APPLICATION MODAL ================= -->
 
 <div id="applicationModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <div class="modal-header">
+<div class="modal-header">
 
-      <h2>
-        ⚔ APPLICATION DETAILS
-      </h2>
+<h2>
+⚔ APPLICATION DETAILS
+</h2>
 
+<button
+class="close-button"
+onclick="closeApplication()"
+>
 
-      <button
-        class="close-button"
-        onclick="closeApplication()"
-      >
+✕
 
-        ✕
-
-      </button>
-
-    </div>
-
-
-    <div
-      class="modal-content"
-      id="applicationDetails"
-    ></div>
-
-
-    <div
-      class="modal-actions"
-      id="modalActions"
-    ></div>
-
-  </div>
+</button>
 
 </div>
 
 
-<!-- ================================
-     SCREENSHOT VIEWER
-================================ -->
-
-<div id="screenshotViewer">
-
-  <button
-    class="viewer-close"
-    onclick="closeScreenshot(event)"
-  >
-
-    ✕
-
-  </button>
+<div
+class="modal-content"
+id="applicationDetails"
+>
+</div>
 
 
-  <img
-    id="viewerImage"
-    src=""
-    alt="Full size Free Fire profile screenshot"
-  >
+<div
+class="modal-actions"
+id="modalActions"
+>
+</div>
+
+</div>
 
 </div>
 
@@ -899,11 +734,10 @@ SUPABASE CONFIG
 */
 
 const SUPABASE_URL =
-  "https://muyggfhblazjqoewrxth.supabase.co";
-
+"https://muyggfhblazjqoewrxth.supabase.co";
 
 const SUPABASE_ANON_KEY =
-  "sb_publishable_M_7Cb2GtvzQqLftmUJE_1Q_fXB1e3Ma";
+"sb_publishable_M_7Cb2GtvzQqLftmUJE_1Q_fXB1e3Ma";
 
 
 /*
@@ -926,51 +760,34 @@ ELEMENTS
 */
 
 const loginPage =
-  document.getElementById("loginPage");
-
+document.getElementById("loginPage");
 
 const dashboard =
-  document.getElementById("dashboard");
-
+document.getElementById("dashboard");
 
 const loginForm =
-  document.getElementById("loginForm");
-
+document.getElementById("loginForm");
 
 const loginButton =
-  document.getElementById("loginButton");
-
+document.getElementById("loginButton");
 
 const loginError =
-  document.getElementById("loginError");
-
+document.getElementById("loginError");
 
 const applicationsTable =
-  document.getElementById("applications");
-
+document.getElementById("applications");
 
 const errorBox =
-  document.getElementById("error");
-
+document.getElementById("error");
 
 const applicationModal =
-  document.getElementById("applicationModal");
-
+document.getElementById("applicationModal");
 
 const applicationDetails =
-  document.getElementById("applicationDetails");
-
+document.getElementById("applicationDetails");
 
 const modalActions =
-  document.getElementById("modalActions");
-
-
-const screenshotViewer =
-  document.getElementById("screenshotViewer");
-
-
-const viewerImage =
-  document.getElementById("viewerImage");
+document.getElementById("modalActions");
 
 
 /*
@@ -980,117 +797,86 @@ LOGIN
 */
 
 loginForm.addEventListener(
-  "submit",
-  async function(event) {
+"submit",
+async function(event){
 
-    event.preventDefault();
+event.preventDefault();
 
-    loginError.style.display = "none";
+loginError.style.display="none";
 
-    loginButton.disabled = true;
+loginButton.disabled=true;
 
-    loginButton.textContent = "LOGGING IN...";
+loginButton.textContent="LOGGING IN...";
 
+const email =
+document.getElementById("email").value.trim();
 
-    const email =
-      document
-        .getElementById("email")
-        .value
-        .trim();
+const password =
+document.getElementById("password").value;
 
+try{
 
-    const password =
-      document
-        .getElementById("password")
-        .value;
+const response =
+await fetch(
+SUPABASE_URL +
+"/auth/v1/token?grant_type=password",
+{
+method:"POST",
 
+headers:{
+"apikey":SUPABASE_ANON_KEY,
+"Content-Type":"application/json"
+},
 
-    try {
-
-      const response =
-        await fetch(
-
-          SUPABASE_URL +
-          "/auth/v1/token?grant_type=password",
-
-          {
-
-            method: "POST",
-
-            headers: {
-
-              "apikey":
-                SUPABASE_ANON_KEY,
-
-              "Content-Type":
-                "application/json"
-
-            },
-
-            body:
-              JSON.stringify({
-
-                email: email,
-
-                password: password
-
-              })
-
-          }
-
-        );
-
-
-      const result =
-        await response.json();
-
-
-      if (!response.ok) {
-
-        throw new Error(
-          result.error_description ||
-          result.msg ||
-          result.message ||
-          "Login failed."
-        );
-
-      }
-
-
-      accessToken =
-        result.access_token;
-
-
-      localStorage.setItem(
-        "tc_admin_access_token",
-        accessToken
-      );
-
-
-      showDashboard();
-
-    }
-
-    catch(error) {
-
-      console.error(error);
-
-      loginError.textContent =
-        error.message;
-
-      loginError.style.display =
-        "block";
-
-      loginButton.disabled =
-        false;
-
-      loginButton.textContent =
-        "🔐 LOGIN";
-
-    }
-
-  }
+body:JSON.stringify({
+email:email,
+password:password
+})
+}
 );
+
+const result =
+await response.json();
+
+if(!response.ok){
+
+throw new Error(
+result.error_description ||
+result.msg ||
+result.message ||
+"Login failed."
+);
+
+}
+
+accessToken =
+result.access_token;
+
+localStorage.setItem(
+"tc_admin_access_token",
+accessToken
+);
+
+showDashboard();
+
+}
+
+catch(error){
+
+console.error(error);
+
+loginError.textContent =
+error.message;
+
+loginError.style.display="block";
+
+loginButton.disabled=false;
+
+loginButton.textContent="🔐 LOGIN";
+
+}
+
+});
 
 
 /*
@@ -1099,15 +885,13 @@ SHOW DASHBOARD
 ========================================
 */
 
-function showDashboard() {
+function showDashboard(){
 
-  loginPage.style.display =
-    "none";
+loginPage.style.display="none";
 
-  dashboard.style.display =
-    "block";
+dashboard.style.display="block";
 
-  loadApplications();
+loadApplications();
 
 }
 
@@ -1119,27 +903,25 @@ LOGOUT
 */
 
 document
-  .getElementById("logoutButton")
-  .addEventListener(
-    "click",
-    function() {
+.getElementById("logoutButton")
+.addEventListener(
+"click",
+function(){
 
-      accessToken = null;
+accessToken=null;
 
-      localStorage.removeItem(
-        "tc_admin_access_token"
-      );
+localStorage.removeItem(
+"tc_admin_access_token"
+);
 
-      dashboard.style.display =
-        "none";
+dashboard.style.display="none";
 
-      loginPage.style.display =
-        "flex";
+loginPage.style.display="flex";
 
-      loginForm.reset();
+loginForm.reset();
 
-    }
-  );
+}
+);
 
 
 /*
@@ -1148,93 +930,74 @@ LOAD APPLICATIONS
 ========================================
 */
 
-async function loadApplications() {
+async function loadApplications(){
 
-  errorBox.style.display =
-    "none";
+errorBox.style.display="none";
 
+applicationsTable.innerHTML=`
 
-  applicationsTable.innerHTML = `
+<tr>
 
-    <tr>
+<td colspan="6" class="loading">
+Loading applications...
+</td>
 
-      <td
-        colspan="6"
-        class="loading"
-      >
+</tr>
 
-        Loading applications...
+`;
 
-      </td>
+try{
 
-    </tr>
+const response =
+await fetch(
 
-  `;
+SUPABASE_URL +
+"/rest/v1/applications?select=*&order=created_at.desc",
 
+{
 
-  try {
+method:"GET",
 
-    const response =
-      await fetch(
+headers:{
+"apikey":SUPABASE_ANON_KEY,
+"Authorization":"Bearer "+accessToken
+}
 
-        SUPABASE_URL +
-        "/rest/v1/applications?select=*&order=created_at.desc",
+}
 
-        {
+);
 
-          method: "GET",
+const text =
+await response.text();
 
-          headers: {
+if(!response.ok){
 
-            "apikey":
-              SUPABASE_ANON_KEY,
+throw new Error(text);
 
-            "Authorization":
-              "Bearer " +
-              accessToken
+}
 
-          }
+allApplications =
+JSON.parse(text);
 
-        }
+updateStats();
 
-      );
+displayApplications(
+allApplications
+);
 
+}
 
-    const text =
-      await response.text();
+catch(error){
 
+console.error(error);
 
-    if (!response.ok) {
+errorBox.textContent =
+"Could not load applications: "+
+error.message;
 
-      throw new Error(text);
+errorBox.style.display="block";
 
-    }
-
-
-    allApplications =
-      JSON.parse(text);
-
-
-    updateStats();
-
-    displayApplications(
-      allApplications
-    );
-
-  }
-
-  catch(error) {
-
-    console.error(error);
-
-    errorBox.textContent =
-      "Could not load applications: " +
-      error.message;
-
-    errorBox.style.display =
-      "block";
-
-  }
+}
 
 }
 
@@ -1245,35 +1008,29 @@ STATS
 ========================================
 */
 
-function updateStats() {
+function updateStats(){
 
-  document.getElementById("total")
-    .textContent =
-    allApplications.length;
+document.getElementById("total")
+.textContent =
+allApplications.length;
 
+document.getElementById("pending")
+.textContent =
+allApplications.filter(
+app=>app.status==="pending"
+).length;
 
-  document.getElementById("pending")
-    .textContent =
-    allApplications.filter(
-      app =>
-        app.status === "pending"
-    ).length;
+document.getElementById("approved")
+.textContent =
+allApplications.filter(
+app=>app.status==="approved"
+).length;
 
-
-  document.getElementById("approved")
-    .textContent =
-    allApplications.filter(
-      app =>
-        app.status === "approved"
-    ).length;
-
-
-  document.getElementById("rejected")
-    .textContent =
-    allApplications.filter(
-      app =>
-        app.status === "rejected"
-    ).length;
+document.getElementById("rejected")
+.textContent =
+allApplications.filter(
+app=>app.status==="rejected"
+).length;
 
 }
 
@@ -1285,122 +1042,172 @@ DISPLAY APPLICATIONS
 */
 
 function displayApplications(
-  applications
-) {
+applications
+){
 
-  if (!applications.length) {
+if(!applications.length){
 
-    applicationsTable.innerHTML = `
+applicationsTable.innerHTML=`
 
-      <tr>
+<tr>
 
-        <td
-          colspan="6"
-          class="loading"
-        >
+<td colspan="6" class="loading">
+No applications found.
+</td>
 
-          No applications found.
+</tr>
 
-        </td>
+`;
 
-      </tr>
+return;
 
-    `;
+}
 
-    return;
+applicationsTable.innerHTML =
+applications.map(
+app=>`
 
-  }
+<tr>
+
+<td>${safe(app.ign)}</td>
+
+<td>${safe(app.uid)}</td>
+
+<td>${safe(app.player_role)}</td>
+
+<td>${safe(app.player_rank)}</td>
+
+<td>
+
+<span class="status ${safe(app.status)}">
+
+${safe(app.status).toUpperCase()}
+
+</span>
+
+</td>
+
+<td>
+
+<button
+class="action view"
+onclick="viewApplication('${safe(app.application_id)}')"
+>
+
+👁 VIEW
+
+</button>
+
+${
+app.status==="pending"
+
+?`
+
+<button
+class="action approve"
+onclick="updateStatus(
+'${safe(app.application_id)}',
+'approved'
+)"
+>
+
+✓
+
+</button>
+
+<button
+class="action reject"
+onclick="updateStatus(
+'${safe(app.application_id)}',
+'rejected'
+)"
+>
+
+✕
+
+</button>
+
+`
+
+:""
+
+}
+
+</td>
+
+</tr>
+
+`
+).join("");
+
+}
 
 
-  applicationsTable.innerHTML =
+/*
+========================================
+GET SCREENSHOT URL
+========================================
+*/
 
-    applications.map(
-      app => `
+function getScreenshotURL(app){
 
-        <tr>
+/*
+Try the main column first.
+*/
 
-          <td>
-            ${safe(app.ign)}
-          </td>
-
-          <td>
-            ${safe(app.uid)}
-          </td>
-
-          <td>
-            ${safe(app.player_role)}
-          </td>
-
-          <td>
-            ${safe(app.player_rank)}
-          </td>
-
-          <td>
-
-            <span
-              class="status ${safe(app.status)}"
-            >
-
-              ${safe(app.status).toUpperCase()}
-
-            </span>
-
-          </td>
-
-          <td>
-
-            <button
-              class="action view"
-              onclick="viewApplication('${safe(app.application_id)}')"
-            >
-
-              👁 VIEW
-
-            </button>
+let url =
+app.profile_screenshot_url;
 
 
-            ${
-              app.status === "pending"
+/*
+Support alternative column names
+in case the tryout form used one.
+*/
 
-              ? `
+if(!url)
+url = app.screenshot_url;
 
-                <button
-                  class="action approve"
-                  onclick="updateStatus(
-                    '${safe(app.application_id)}',
-                    'approved'
-                  )"
-                >
+if(!url)
+url = app.profile_image_url;
 
-                  ✓
+if(!url)
+url = app.image_url;
 
-                </button>
+if(!url)
+url = app.profile_picture_url;
+
+if(!url)
+url = app.screenshot;
 
 
-                <button
-                  class="action reject"
-                  onclick="updateStatus(
-                    '${safe(app.application_id)}',
-                    'rejected'
-                  )"
-                >
+/*
+Nothing found.
+*/
 
-                  ✕
+if(!url){
+return "";
+}
 
-                </button>
 
-              `
+/*
+If the database contains only the
+storage file path, convert it to
+a public Supabase Storage URL.
+*/
 
-              : ""
+if(
+!String(url).startsWith("http://") &&
+!String(url).startsWith("https://")
+){
 
-            }
+url =
+SUPABASE_URL +
+"/storage/v1/object/public/profile-screenshots/" +
+String(url).replace(/^\/+/,"");
 
-          </td>
+}
 
-        </tr>
-
-      `
-    ).join("");
+return String(url);
 
 }
 
@@ -1412,118 +1219,103 @@ VIEW FULL APPLICATION
 */
 
 function viewApplication(
-  applicationId
-) {
+applicationId
+){
 
-  selectedApplication =
-    allApplications.find(
-      app =>
-        String(app.application_id) ===
-        String(applicationId)
-    );
+selectedApplication =
+allApplications.find(
+app =>
+String(app.application_id) ===
+String(applicationId)
+);
 
+if(!selectedApplication){
 
-  if (!selectedApplication) {
+alert(
+"Application could not be found."
+);
 
-    alert(
-      "Application could not be found."
-    );
+return;
 
-    return;
+}
 
-  }
-
-
-  const app =
-    selectedApplication;
+const app =
+selectedApplication;
 
 
 /*
 ========================================
-PROFILE SCREENSHOT
+SCREENSHOT
 ========================================
 */
 
+const screenshotURL =
+getScreenshotURL(app);
+
 let screenshotHTML = "";
 
-const screenshotURL =
-  app.profile_screenshot_url
-    ? String(
-        app.profile_screenshot_url
-      ).trim()
-    : "";
 
+if(screenshotURL){
 
-if (screenshotURL) {
+screenshotHTML = `
 
-  screenshotHTML = `
+<div class="screenshot-box">
 
-    <div class="screenshot-box">
+<h3>
+📸 FREE FIRE PROFILE SCREENSHOT
+</h3>
 
-      <h3>
-        📸 FREE FIRE PROFILE SCREENSHOT
-      </h3>
+<img
+src="${safe(screenshotURL)}"
+class="profile-image"
+alt="Free Fire profile screenshot"
+loading="lazy"
+referrerpolicy="no-referrer"
+onerror="
+this.style.display='none';
+this.nextElementSibling.style.display='block';
+"
+>
 
+<div
+class="image-error"
+style="display:none;"
+>
 
-      <img
-        src="${safe(screenshotURL)}"
-        class="profile-image"
-        alt="Free Fire profile screenshot"
+⚠️ Unable to load the profile screenshot.
 
-        onclick="openScreenshot(
-          '${safe(screenshotURL)}'
-        )"
+</div>
 
-        onerror="handleImageError(this)"
-      >
+<div class="image-url">
 
+${safe(screenshotURL)}
 
-      <p style="
-        color:#888;
-        font-size:12px;
-        margin-top:10px;
-      ">
+</div>
 
-        👆 Tap the screenshot to view it larger
+</div>
 
-      </p>
+`;
 
+}else{
 
-      <div
-        class="image-error"
-        style="display:none;"
-      >
+screenshotHTML = `
 
-        ⚠️ Unable to load the profile screenshot.
+<div class="screenshot-box">
 
-      </div>
+<h3>
+📸 FREE FIRE PROFILE SCREENSHOT
+</h3>
 
-    </div>
+<div class="image-error">
 
-  `;
+⚠️ No screenshot URL was found
+in this application record.
 
-}
+</div>
 
-else {
+</div>
 
-  screenshotHTML = `
-
-    <div class="screenshot-box">
-
-      <h3>
-        📸 FREE FIRE PROFILE SCREENSHOT
-      </h3>
-
-
-      <div class="image-error">
-
-        No profile screenshot was uploaded.
-
-      </div>
-
-    </div>
-
-  `;
+`;
 
 }
 
@@ -1536,129 +1328,126 @@ APPLICATION DETAILS
 
 applicationDetails.innerHTML = `
 
-  <div
-    class="modal-status ${safe(app.status)}"
-  >
+<div class="modal-status ${safe(app.status)}">
 
-    STATUS:
-    ${safe(app.status).toUpperCase()}
+STATUS:
+${safe(app.status).toUpperCase()}
 
-  </div>
+</div>
 
 
-  ${detail(
-    "Application ID",
-    app.application_id
-  )}
+${detail(
+"Application ID",
+app.application_id
+)}
 
 
-  ${detail(
-    "In-Game Name",
-    app.ign
-  )}
+${detail(
+"In-Game Name",
+app.ign
+)}
 
 
-  ${detail(
-    "Free Fire UID",
-    app.uid
-  )}
+${detail(
+"Free Fire UID",
+app.uid
+)}
 
 
-  ${detail(
-    "Game Level",
-    app.game_level
-  )}
+${detail(
+"Game Level",
+app.game_level
+)}
 
 
-  ${detail(
-    "Prime Level",
-    app.prime_level
-  )}
+${detail(
+"Prime Level",
+app.prime_level
+)}
 
 
-  ${detail(
-    "Gender",
-    app.gender
-  )}
+${detail(
+"Gender",
+app.gender
+)}
 
 
-  ${detail(
-    "WhatsApp / Contact",
-    app.contact
-  )}
+${detail(
+"WhatsApp / Contact",
+app.contact
+)}
 
 
-  ${detail(
-    "Main Role",
-    app.player_role
-  )}
+${detail(
+"Main Role",
+app.player_role
+)}
 
 
-  ${detail(
-    "Current Rank",
-    app.player_rank
-  )}
+${detail(
+"Current Rank",
+app.player_rank
+)}
 
 
-  ${detail(
-    "Headshot %",
-    app.headshot
-  )}
+${detail(
+"Headshot %",
+app.headshot
+)}
 
 
-  ${detail(
-    "Game Mode",
-    app.game_mode
-  )}
+${detail(
+"Game Mode",
+app.game_mode
+)}
 
 
-  ${detail(
-    "Microphone",
-    app.microphone
-  )}
+${detail(
+"Microphone",
+app.microphone
+)}
 
 
-  ${detail(
-    "Previous Guild / Team",
-    app.previous_guild
-  )}
+${detail(
+"Previous Guild / Team",
+app.previous_guild
+)}
 
 
-  ${screenshotHTML}
+${screenshotHTML}
 
 
-  <div class="detail">
+<div class="detail">
 
-    <div class="detail-label">
+<div class="detail-label">
 
-      WHY DO YOU WANT TO JOIN
-      THE ⚔ CONQUEROR?
+WHY DO YOU WANT TO JOIN
+THE ⚔ CONQUEROR?
 
-    </div>
+</div>
 
+<div class="detail-value detail-reason">
 
-    <div
-      class="detail-value detail-reason"
-    >
+${safe(
+app.reason ||
+"No reason provided."
+)}
 
-      ${safe(
-        app.reason ||
-        "No reason provided."
-      )}
+</div>
 
-    </div>
-
-  </div>
+</div>
 
 
-  ${detail(
-    "Submitted",
-    app.created_at
-      ? new Date(
-          app.created_at
-        ).toLocaleString()
-      : "Unknown"
-  )}
+${detail(
+"Submitted",
+app.created_at
+?
+new Date(
+app.created_at
+).toLocaleString()
+:
+"Unknown"
+)}
 
 `;
 
@@ -1669,64 +1458,57 @@ MODAL ACTIONS
 ========================================
 */
 
-if (
-  app.status === "pending"
-) {
+if(app.status==="pending"){
 
-  modalActions.innerHTML = `
+modalActions.innerHTML=`
 
-    <button
-      class="modal-approve"
-      onclick="updateStatus(
-        '${safe(app.application_id)}',
-        'approved'
-      )"
-    >
+<button
+class="modal-approve"
+onclick="updateStatus(
+'${safe(app.application_id)}',
+'approved'
+)"
+>
 
-      ✓ APPROVE APPLICATION
+✓ APPROVE APPLICATION
 
-    </button>
+</button>
 
+<button
+class="modal-reject"
+onclick="updateStatus(
+'${safe(app.application_id)}',
+'rejected'
+)"
+>
 
-    <button
-      class="modal-reject"
-      onclick="updateStatus(
-        '${safe(app.application_id)}',
-        'rejected'
-      )"
-    >
+✕ REJECT APPLICATION
 
-      ✕ REJECT APPLICATION
+</button>
 
-    </button>
+`;
 
-  `;
+}else{
 
-}
+modalActions.innerHTML=`
 
-else {
+<button
+class="close-button"
+onclick="closeApplication()"
+>
 
-  modalActions.innerHTML = `
+CLOSE
 
-    <button
-      class="close-button"
-      onclick="closeApplication()"
-    >
+</button>
 
-      CLOSE
-
-    </button>
-
-  `;
+`;
 
 }
 
 
-applicationModal.style.display =
-  "block";
+applicationModal.style.display="block";
 
-document.body.style.overflow =
-  "hidden";
+document.body.style.overflow="hidden";
 
 }
 
@@ -1738,104 +1520,36 @@ DETAIL HELPER
 */
 
 function detail(
-  label,
-  value
-) {
+label,
+value
+){
 
-  return `
+return `
 
-    <div class="detail">
+<div class="detail">
 
-      <div class="detail-label">
+<div class="detail-label">
 
-        ${safe(label)}
+${safe(label)}
 
-      </div>
+</div>
 
+<div class="detail-value">
 
-      <div class="detail-value">
+${
+value !== null &&
+value !== undefined &&
+value !== ""
 
-        ${
-          value !== null &&
-          value !== undefined &&
-          value !== ""
-
-            ? safe(value)
-
-            : "Not provided"
-
-        }
-
-      </div>
-
-    </div>
-
-  `;
-
+?safe(value)
+:"Not provided"
 }
 
+</div>
 
-/*
-========================================
-OPEN SCREENSHOT
-========================================
-*/
+</div>
 
-function openScreenshot(url) {
-
-  viewerImage.src = url;
-
-  screenshotViewer.style.display =
-    "flex";
-
-}
-
-
-/*
-========================================
-CLOSE SCREENSHOT
-========================================
-*/
-
-function closeScreenshot(event) {
-
-  if (event) {
-
-    event.stopPropagation();
-
-  }
-
-  viewerImage.src = "";
-
-  screenshotViewer.style.display =
-    "none";
-
-}
-
-
-/*
-========================================
-IMAGE ERROR
-========================================
-*/
-
-function handleImageError(image) {
-
-  image.style.display =
-    "none";
-
-
-  const error =
-    image.nextElementSibling
-      .nextElementSibling;
-
-
-  if (error) {
-
-    error.style.display =
-      "block";
-
-  }
+`;
 
 }
 
@@ -1846,16 +1560,13 @@ CLOSE APPLICATION
 ========================================
 */
 
-function closeApplication() {
+function closeApplication(){
 
-  applicationModal.style.display =
-    "none";
+applicationModal.style.display="none";
 
-  document.body.style.overflow =
-    "";
+document.body.style.overflow="";
 
-  selectedApplication =
-    null;
+selectedApplication=null;
 
 }
 
@@ -1867,52 +1578,42 @@ SEARCH
 */
 
 document
-  .getElementById("search")
-  .addEventListener(
-    "input",
-    function() {
+.getElementById("search")
+.addEventListener(
+"input",
+function(){
 
-      const term =
-        this.value
-          .toLowerCase()
-          .trim();
+const term =
+this.value
+.toLowerCase()
+.trim();
 
+const filtered =
+allApplications.filter(
+app =>
 
-      const filtered =
-        allApplications.filter(
-          app =>
+String(app.ign||"")
+.toLowerCase()
+.includes(term)
 
-            String(
-              app.ign || ""
-            )
-            .toLowerCase()
-            .includes(term)
+||
 
-            ||
+String(app.uid||"")
+.toLowerCase()
+.includes(term)
 
-            String(
-              app.uid || ""
-            )
-            .toLowerCase()
-            .includes(term)
+||
 
-            ||
+String(app.application_id||"")
+.toLowerCase()
+.includes(term)
 
-            String(
-              app.application_id || ""
-            )
-            .toLowerCase()
-            .includes(term)
+);
 
-        );
+displayApplications(filtered);
 
-
-      displayApplications(
-        filtered
-      );
-
-    }
-  );
+}
+);
 
 
 /*
@@ -1922,11 +1623,11 @@ REFRESH
 */
 
 document
-  .getElementById("refreshButton")
-  .addEventListener(
-    "click",
-    loadApplications
-  );
+.getElementById("refreshButton")
+.addEventListener(
+"click",
+loadApplications
+);
 
 
 /*
@@ -1936,100 +1637,90 @@ APPROVE / REJECT
 */
 
 async function updateStatus(
-  applicationId,
-  newStatus
-) {
+applicationId,
+newStatus
+){
 
-  const action =
-    newStatus === "approved"
-      ? "approve"
-      : "reject";
+const action =
+newStatus==="approved"
+?"approve"
+:"reject";
 
+if(
+!confirm(
+"Are you sure you want to "+
+action+
+" this application?"
+)
+){
 
-  if (
-    !confirm(
-      "Are you sure you want to " +
-      action +
-      " this application?"
-    )
-  ) {
+return;
 
-    return;
+}
 
-  }
+try{
 
+const response =
+await fetch(
 
-  try {
+SUPABASE_URL+
+"/rest/v1/applications"+
+"?application_id=eq."+
+encodeURIComponent(applicationId),
 
-    const response =
-      await fetch(
+{
 
-        SUPABASE_URL +
-        "/rest/v1/applications" +
-        "?application_id=eq." +
-        encodeURIComponent(
-          applicationId
-        ),
+method:"PATCH",
 
-        {
+headers:{
 
-          method: "PATCH",
+"apikey":
+SUPABASE_ANON_KEY,
 
-          headers: {
+"Authorization":
+"Bearer "+
+accessToken,
 
-            "apikey":
-              SUPABASE_ANON_KEY,
+"Content-Type":
+"application/json",
 
-            "Authorization":
-              "Bearer " +
-              accessToken,
+"Prefer":
+"return=minimal"
 
-            "Content-Type":
-              "application/json",
+},
 
-            "Prefer":
-              "return=minimal"
+body:
+JSON.stringify({
+status:newStatus
+})
 
-          },
+}
 
-          body:
-            JSON.stringify({
+);
 
-              status:
-                newStatus
+const text =
+await response.text();
 
-            })
+if(!response.ok){
 
-        }
+throw new Error(text);
 
-      );
+}
 
+closeApplication();
 
-    const text =
-      await response.text();
+await loadApplications();
 
+}
 
-    if (!response.ok) {
+catch(error){
 
-      throw new Error(text);
+alert(
+"Could not update application:\n\n"+
+error.message
+);
 
-    }
-
-
-    closeApplication();
-
-    await loadApplications();
-
-  }
-
-  catch(error) {
-
-    alert(
-      "Could not update application:\n\n" +
-      error.message
-    );
-
-  }
+}
 
 }
 
@@ -2040,44 +1731,24 @@ SAFE TEXT
 ========================================
 */
 
-function safe(value) {
+function safe(value){
 
-  if (
-    value === null ||
-    value === undefined
-  ) {
+if(
+value===null ||
+value===undefined
+){
 
-    return "";
+return "";
 
-  }
+}
 
+return String(value)
 
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
@@ -2088,123 +1759,94 @@ CHECK SAVED SESSION
 ========================================
 */
 
-async function checkSession() {
+async function checkSession(){
 
-  const savedToken =
-    localStorage.getItem(
-      "tc_admin_access_token"
-    );
+const savedToken =
+localStorage.getItem(
+"tc_admin_access_token"
+);
 
+if(!savedToken){
 
-  if (!savedToken) {
+return;
 
-    return;
+}
 
-  }
+accessToken =
+savedToken;
 
+try{
 
-  accessToken =
-    savedToken;
+const response =
+await fetch(
 
+SUPABASE_URL+
+"/auth/v1/user",
 
-  try {
+{
 
-    const response =
-      await fetch(
+method:"GET",
 
-        SUPABASE_URL +
-        "/auth/v1/user",
+headers:{
 
-        {
+"apikey":
+SUPABASE_ANON_KEY,
 
-          method: "GET",
+"Authorization":
+"Bearer "+
+accessToken
 
-          headers: {
+}
 
-            "apikey":
-              SUPABASE_ANON_KEY,
+}
 
-            "Authorization":
-              "Bearer " +
-              accessToken
+);
 
-          }
+if(!response.ok){
 
-        }
+throw new Error(
+"Session expired."
+);
 
-      );
+}
 
+showDashboard();
 
-    if (!response.ok) {
+}
 
-      throw new Error(
-        "Session expired."
-      );
+catch(error){
 
-    }
+accessToken=null;
 
+localStorage.removeItem(
+"tc_admin_access_token"
+);
 
-    showDashboard();
-
-  }
-
-  catch(error) {
-
-    accessToken =
-      null;
-
-    localStorage.removeItem(
-      "tc_admin_access_token"
-    );
-
-  }
+}
 
 }
 
 
 /*
 ========================================
-CLOSE APPLICATION OUTSIDE
+CLOSE MODAL OUTSIDE
 ========================================
 */
 
 applicationModal.addEventListener(
-  "click",
-  function(event) {
+"click",
+function(event){
 
-    if (
-      event.target ===
-      applicationModal
-    ) {
+if(
+event.target ===
+applicationModal
+){
 
-      closeApplication();
+closeApplication();
 
-    }
+}
 
-  }
-);
-
-
-/*
-========================================
-CLOSE SCREENSHOT OUTSIDE
-========================================
-*/
-
-screenshotViewer.addEventListener(
-  "click",
-  function(event) {
-
-    if (
-      event.target ===
-      screenshotViewer
-    ) {
-
-      closeScreenshot();
-
-    }
-
-  }
+}
 );
 
 
