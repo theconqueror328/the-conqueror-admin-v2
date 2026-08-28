@@ -1628,4 +1628,317 @@ document
             ||
 
             String(
-              ap
+              app.uid || ""
+            )
+            .toLowerCase()
+            .includes(term)
+
+            ||
+
+            String(
+              app.application_id || ""
+            )
+            .toLowerCase()
+            .includes(term)
+
+        );
+
+
+      displayApplications(
+        filtered
+      );
+
+    }
+  );
+
+
+/*
+========================================
+REFRESH
+========================================
+*/
+
+document
+  .getElementById("refreshButton")
+  .addEventListener(
+    "click",
+    loadApplications
+  );
+
+
+/*
+========================================
+APPROVE / REJECT
+========================================
+*/
+
+async function updateStatus(
+  applicationId,
+  newStatus
+) {
+
+  const action =
+    newStatus === "approved"
+      ? "approve"
+      : "reject";
+
+
+  if (
+    !confirm(
+      "Are you sure you want to " +
+      action +
+      " this application?"
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  try {
+
+    const response =
+      await fetch(
+
+        SUPABASE_URL +
+        "/rest/v1/applications" +
+        "?application_id=eq." +
+        encodeURIComponent(
+          applicationId
+        ),
+
+        {
+
+          method:
+            "PATCH",
+
+          headers: {
+
+            "apikey":
+              SUPABASE_ANON_KEY,
+
+            "Authorization":
+              "Bearer " +
+              accessToken,
+
+            "Content-Type":
+              "application/json",
+
+            "Prefer":
+              "return=minimal"
+
+          },
+
+          body:
+            JSON.stringify({
+
+              status:
+                newStatus
+
+            })
+
+        }
+
+      );
+
+
+    const text =
+      await response.text();
+
+
+    if (!response.ok) {
+
+      throw new Error(text);
+
+    }
+
+
+    closeApplication();
+
+    await loadApplications();
+
+
+  }
+
+
+  catch (error) {
+
+    alert(
+      "Could not update application:\n\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/*
+========================================
+SAFE TEXT
+========================================
+*/
+
+function safe(value) {
+
+  if (
+    value === null ||
+    value === undefined
+  ) {
+
+    return "";
+
+  }
+
+
+  return String(value)
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+/*
+========================================
+CHECK SAVED SESSION
+========================================
+*/
+
+async function checkSession() {
+
+  const savedToken =
+    localStorage.getItem(
+      "tc_admin_access_token"
+    );
+
+
+  if (!savedToken) {
+
+    return;
+
+  }
+
+
+  accessToken =
+    savedToken;
+
+
+  try {
+
+    const response =
+      await fetch(
+
+        SUPABASE_URL +
+        "/auth/v1/user",
+
+        {
+
+          method:
+            "GET",
+
+          headers: {
+
+            "apikey":
+              SUPABASE_ANON_KEY,
+
+            "Authorization":
+              "Bearer " +
+              accessToken
+
+          }
+
+        }
+
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Session expired."
+      );
+
+    }
+
+
+    showDashboard();
+
+
+  }
+
+
+  catch (error) {
+
+    accessToken =
+      null;
+
+
+    localStorage.removeItem(
+      "tc_admin_access_token"
+    );
+
+  }
+
+}
+
+
+/*
+========================================
+CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================
+*/
+
+applicationModal.addEventListener(
+  "click",
+  function(event) {
+
+    if (
+      event.target ===
+      applicationModal
+    ) {
+
+      closeApplication();
+
+    }
+
+  }
+);
+
+
+/*
+========================================
+START
+========================================
+*/
+
+checkSession();
+
+</script>
+
+</body>
+
+</html>
