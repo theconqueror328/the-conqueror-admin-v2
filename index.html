@@ -1,784 +1,467 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html><html lang="en">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE ⚔ CONQUEROR | Admin</title><style>
+*{box-sizing:border-box}
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
-<title>THE ⚔ CONQUEROR | Admin</title>
-
-<style>
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #070707;
-  color: white;
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#070707;
+  color:white;
 }
 
 /* LOGIN */
-
-#loginPage {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-
-  background:
-    radial-gradient(
-      circle,
-      #4d1708 0%,
-      #120806 45%,
-      #070707 80%
-    );
+#loginPage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:radial-gradient(circle,#4d1708 0%,#120806 45%,#070707 80%);
 }
 
-.login-box {
-  width: 100%;
-  max-width: 420px;
-  padding: 30px;
-  background: #101010;
-  border: 1px solid #292929;
-  border-radius: 15px;
+.login-box{
+  width:100%;
+  max-width:420px;
+  padding:30px;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:15px;
 }
 
-.login-logo {
-  text-align: center;
-  margin-bottom: 25px;
+.login-logo{text-align:center;margin-bottom:25px}
+.login-logo h1{margin:0;color:#ff5b22;font-size:25px}
+.login-logo p{color:#888}
+
+label{
+  display:block;
+  margin-top:18px;
+  font-weight:bold;
 }
 
-.login-logo h1 {
-  margin: 0;
-  color: #ff5b22;
-  font-size: 25px;
+input{
+  width:100%;
+  margin-top:8px;
+  padding:14px;
+  background:#070707;
+  color:white;
+  border:1px solid #333;
+  border-radius:8px;
+  outline:none;
 }
 
-.login-logo p {
-  color: #888;
+input:focus{border-color:#ff541c}
+
+button{
+  cursor:pointer;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
 }
 
-label {
-  display: block;
-  margin-top: 18px;
-  font-weight: bold;
+.login-button{
+  width:100%;
+  margin-top:22px;
+  padding:14px;
+  background:#ff541c;
+  color:white;
 }
 
-input {
-  width: 100%;
-  margin-top: 8px;
-  padding: 14px;
-  background: #070707;
-  color: white;
-  border: 1px solid #333;
-  border-radius: 8px;
-  outline: none;
+.login-error{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  border-radius:8px;
+  background:#3a0b0b;
+  color:#ff7777;
 }
-
-input:focus {
-  border-color: #ff541c;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.login-button {
-  width: 100%;
-  margin-top: 22px;
-  padding: 14px;
-  background: #ff541c;
-  color: white;
-}
-
-.login-error {
-  display: none;
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 8px;
-  background: #3a0b0b;
-  color: #ff7777;
-}
-
 
 /* DASHBOARD */
+#dashboard{display:none}
 
-#dashboard {
-  display: none;
+header{
+  padding:20px;
+  background:#101010;
+  border-bottom:1px solid #292929;
 }
 
-header {
-  padding: 20px;
-  background: #101010;
-  border-bottom: 1px solid #292929;
+.header-inner{
+  width:94%;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.header-inner {
-  width: 94%;
-  max-width: 1200px;
-  margin: auto;
+header h1{margin:0;color:#ff5b22}
+header p{margin:5px 0 0;color:#888}
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.logout{
+  padding:11px 16px;
+  background:#333;
+  color:white;
 }
 
-header h1 {
-  margin: 0;
-  color: #ff5b22;
+.container{
+  width:94%;
+  max-width:1200px;
+  margin:auto;
+  padding:30px 0;
 }
 
-header p {
-  margin: 5px 0 0;
-  color: #888;
+#error{
+  display:none;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:8px;
+  background:#3a0b0b;
+  color:#ff7777;
 }
-
-.logout {
-  padding: 11px 16px;
-  background: #333;
-  color: white;
-}
-
-.container {
-  width: 94%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 30px 0;
-}
-
-#error {
-  display: none;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  background: #3a0b0b;
-  color: #ff7777;
-}
-
 
 /* STATS */
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin-bottom: 25px;
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
 }
 
-.stat {
-  padding: 20px;
-  background: #101010;
-  border: 1px solid #292929;
-  border-radius: 12px;
+.stat{
+  padding:20px;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:12px;
 }
 
-.stat-title {
-  color: #888;
-  font-size: 12px;
+.stat-title{
+  color:#888;
+  font-size:12px;
 }
 
-.stat-number {
-  margin-top: 8px;
-  font-size: 30px;
-  font-weight: bold;
-  color: #ff652c;
+.stat-number{
+  margin-top:8px;
+  font-size:30px;
+  font-weight:bold;
+  color:#ff652c;
 }
-
 
 /* SEARCH */
-
-.toolbar {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
 }
 
-.search {
-  flex: 1;
-}
+.search{flex:1}
 
-.refresh {
-  padding: 12px 18px;
-  background: #ff541c;
-  color: white;
+.refresh{
+  padding:12px 18px;
+  background:#ff541c;
+  color:white;
 }
-
 
 /* TABLE */
-
-.table-wrapper {
-  overflow-x: auto;
-  background: #101010;
-  border: 1px solid #292929;
-  border-radius: 12px;
+.table-wrapper{
+  overflow-x:auto;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:12px;
 }
 
-table {
-  width: 100%;
-  min-width: 800px;
-  border-collapse: collapse;
+table{
+  width:100%;
+  min-width:800px;
+  border-collapse:collapse;
 }
 
-th,
-td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #242424;
+th,td{
+  padding:15px;
+  text-align:left;
+  border-bottom:1px solid #242424;
 }
 
-th {
-  color: #ff652c;
+th{color:#ff652c}
+
+.status{
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
 }
 
-.status {
-  padding: 5px 9px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: bold;
+.pending{
+  background:#4a3200;
+  color:#ffcc55;
 }
 
-.pending {
-  background: #4a3200;
-  color: #ffcc55;
+.approved{
+  background:#063b1b;
+  color:#52e38b;
 }
 
-.approved {
-  background: #063b1b;
-  color: #52e38b;
+.rejected{
+  background:#430909;
+  color:#ff6969;
 }
 
-.rejected {
-  background: #430909;
-  color: #ff6969;
+/* ACTIONS */
+.action{
+  padding:7px 10px;
+  margin-right:4px;
+  color:white;
 }
 
+.view{background:#444}
+.approve{background:#087f3d}
+.reject{background:#a71919}
 
-/* ACTION BUTTONS */
-
-.action {
-  padding: 7px 10px;
-  margin-right: 4px;
-  color: white;
+/* MODAL */
+#applicationModal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.88);
+  z-index:1000;
+  padding:20px;
+  overflow-y:auto;
 }
 
-.view {
-  background: #444;
+.modal-box{
+  width:100%;
+  max-width:760px;
+  margin:30px auto;
+  background:#101010;
+  border:1px solid #333;
+  border-radius:15px;
+  overflow:hidden;
 }
 
-.approve {
-  background: #087f3d;
+.modal-header{
+  padding:20px;
+  background:linear-gradient(135deg,#351006,#101010);
+  border-bottom:1px solid #292929;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.reject {
-  background: #a71919;
+.modal-header h2{
+  margin:0;
+  color:#ff652c;
 }
 
-
-/* APPLICATION MODAL */
-
-#applicationModal {
-  display: none;
-
-  position: fixed;
-  inset: 0;
-
-  background: rgba(0, 0, 0, 0.85);
-
-  z-index: 1000;
-
-  padding: 20px;
-
-  overflow-y: auto;
+.close-button{
+  background:#333;
+  color:white;
+  padding:9px 13px;
 }
 
-.modal-box {
-  width: 100%;
-  max-width: 700px;
+.modal-content{padding:25px}
 
-  margin: 30px auto;
-
-  background: #101010;
-
-  border: 1px solid #333;
-
-  border-radius: 15px;
-
-  overflow: hidden;
+.detail{
+  padding:15px 0;
+  border-bottom:1px solid #252525;
 }
 
-.modal-header {
-  padding: 20px;
+.detail:last-child{border-bottom:none}
 
-  background:
-    linear-gradient(
-      135deg,
-      #351006,
-      #101010
-    );
-
-  border-bottom: 1px solid #292929;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.detail-label{
+  color:#888;
+  font-size:12px;
+  margin-bottom:5px;
+  text-transform:uppercase;
 }
 
-.modal-header h2 {
-  margin: 0;
-  color: #ff652c;
+.detail-value{
+  color:white;
+  font-size:16px;
+  word-break:break-word;
 }
 
-.close-button {
-  background: #333;
-  color: white;
-  padding: 9px 13px;
+.detail-reason{
+  white-space:pre-wrap;
+  line-height:1.6;
 }
 
-.modal-content {
-  padding: 25px;
+/* SCREENSHOT */
+.screenshot-box{
+  margin:20px 0;
+  padding:18px;
+  background:#080808;
+  border:1px solid #292929;
+  border-radius:12px;
+  text-align:center;
 }
 
-.detail {
-  padding: 15px 0;
-  border-bottom: 1px solid #252525;
+.screenshot-box h3{
+  margin:0 0 15px;
+  color:#ff652c;
 }
 
-.detail:last-child {
-  border-bottom: none;
+.profile-image{
+  display:block;
+  width:100%;
+  max-width:500px;
+  max-height:600px;
+  object-fit:contain;
+  margin:auto;
+  border-radius:10px;
+  border:1px solid #333;
+  background:#000;
 }
 
-.detail-label {
-  color: #888;
-  font-size: 12px;
-  margin-bottom: 5px;
-  text-transform: uppercase;
+.image-error{
+  color:#ff7777;
+  padding:20px;
 }
 
-.detail-value {
-  color: white;
-  font-size: 16px;
-  word-break: break-word;
+.modal-actions{
+  display:flex;
+  gap:10px;
+  padding:20px 25px;
+  border-top:1px solid #292929;
 }
 
-.detail-reason {
-  white-space: pre-wrap;
-  line-height: 1.6;
+.modal-actions button{
+  flex:1;
+  padding:13px;
+  color:white;
 }
 
-.modal-actions {
-  display: flex;
-  gap: 10px;
-  padding: 20px 25px;
+.modal-approve{background:#087f3d}
+.modal-reject{background:#a71919}
 
-  border-top: 1px solid #292929;
+.modal-status{
+  text-align:center;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
 }
 
-.modal-actions button {
-  flex: 1;
-  padding: 13px;
-  color: white;
+.loading{
+  text-align:center;
+  color:#888;
+  padding:30px;
 }
 
-.modal-approve {
-  background: #087f3d;
-}
+@media(max-width:700px){
 
-.modal-reject {
-  background: #a71919;
-}
-
-.modal-status {
-  text-align: center;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-
-/* LOADING */
-
-.loading {
-  text-align: center;
-  color: #888;
-  padding: 30px;
-}
-
-
-@media (max-width: 700px) {
-
-  .stats {
-    grid-template-columns: 1fr 1fr;
+  .stats{
+    grid-template-columns:1fr 1fr;
   }
 
-  .toolbar {
-    flex-direction: column;
+  .toolbar{
+    flex-direction:column;
   }
 
-  .header-inner {
-    gap: 15px;
+  .header-inner{
+    gap:15px;
   }
 
-  .modal-actions {
-    flex-direction: column;
+  .modal-actions{
+    flex-direction:column;
+  }
+
+  .modal-content{
+    padding:18px;
   }
 
 }
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<!-- LOGIN PAGE -->
-
-<section id="loginPage">
-
-  <div class="login-box">
-
-    <div class="login-logo">
-
-      <h1>
-        THE ⚔ CONQUEROR
-      </h1>
-
-      <p>
-        Admin Dashboard
-      </p>
-
-    </div>
-
-
-    <form id="loginForm">
-
-      <label>
-
-        Admin Email
-
-        <input
-          type="email"
-          id="email"
-          placeholder="Enter admin email"
-          required
-        >
-
-      </label>
-
-
-      <label>
-
-        Password
-
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter password"
-          required
-        >
-
-      </label>
-
-
-      <button
-        type="submit"
-        class="login-button"
-        id="loginButton"
-      >
-
-        🔐 LOGIN
-
-      </button>
-
-
-      <div
-        id="loginError"
-        class="login-error"
-      ></div>
-
-    </form>
-
-  </div>
-
-</section>
-
-
-
-<!-- DASHBOARD -->
-
-<section id="dashboard">
-
-
-<header>
-
-  <div class="header-inner">
-
-    <div>
-
-      <h1>
-        THE ⚔ CONQUEROR
-      </h1>
-
-      <p>
-        Guild Recruitment Admin Dashboard
-      </p>
-
-    </div>
-
-
-    <button
-      class="logout"
-      id="logoutButton"
-    >
-
-      LOGOUT
-
-    </button>
-
-  </div>
-
-</header>
-
-
-
-<div class="container">
-
-
-  <div id="error"></div>
-
-
-  <!-- STATS -->
-
-  <div class="stats">
-
-    <div class="stat">
-
-      <div class="stat-title">
-        TOTAL APPLICATIONS
-      </div>
-
-      <div
-        class="stat-number"
-        id="total"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-title">
-        PENDING
-      </div>
-
-      <div
-        class="stat-number"
-        id="pending"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-title">
-        APPROVED
-      </div>
-
-      <div
-        class="stat-number"
-        id="approved"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-title">
-        REJECTED
-      </div>
-
-      <div
-        class="stat-number"
-        id="rejected"
-      >
-        0
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- SEARCH -->
-
-  <div class="toolbar">
-
-    <input
-      class="search"
-      id="search"
-      type="text"
-      placeholder="Search by IGN or UID..."
-    >
-
-
-    <button
-      class="refresh"
-      id="refreshButton"
-    >
-
-      🔄 REFRESH
-
-    </button>
-
-  </div>
-
-
-
-  <!-- APPLICATION TABLE -->
-
-  <div class="table-wrapper">
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>
-            IGN
-          </th>
-
-          <th>
-            UID
-          </th>
-
-          <th>
-            ROLE
-          </th>
-
-          <th>
-            RANK
-          </th>
-
-          <th>
-            STATUS
-          </th>
-
-          <th>
-            ACTION
-          </th>
-
-        </tr>
-
-      </thead>
-
-
-      <tbody
-        id="applications"
-      >
-
-        <tr>
-
-          <td
-            colspan="6"
-            class="loading"
-          >
-
-            Loading applications...
-
-          </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- APPLICATION DETAILS MODAL -->
-
-<div
-  id="applicationModal"
->
-
-
-  <div class="modal-box">
-
-
-    <div class="modal-header">
-
-      <h2>
-        ⚔ APPLICATION DETAILS
-      </h2>
-
-
-      <button
-        class="close-button"
-        onclick="closeApplication()"
-      >
-
-        ✕
-
-      </button>
-
-    </div>
-
-
-
-    <div
-      class="modal-content"
-      id="applicationDetails"
-    >
-
-    </div>
-
-
-    <div
-      class="modal-actions"
-      id="modalActions"
-    >
-
-    </div>
-
-
-  </div>
-
-</div>
-
-
-
-<script>
-
+</style></head><body><!-- LOGIN --><section id="loginPage"><div class="login-box"><div class="login-logo"><h1>THE ⚔ CONQUEROR</h1><p>Admin Dashboard</p></div><form id="loginForm"><label>
+Admin Email<input
+type="email"
+id="email"
+placeholder="Enter admin email"
+required>
+</label>
+
+<label>
+Password<input
+type="password"
+id="password"
+placeholder="Enter password"
+required>
+</label>
+
+<button
+type="submit"
+class="login-button"
+id="loginButton">
+
+🔐 LOGIN
+
+</button><div
+id="loginError"
+class="login-error">
+</div></form></div></section><!-- DASHBOARD --><section id="dashboard"><header><div class="header-inner"><div><h1>THE ⚔ CONQUEROR</h1><p>Guild Recruitment Admin Dashboard</p></div><button
+class="logout"
+id="logoutButton">
+
+LOGOUT
+
+</button></div></header><div class="container"><div id="error"></div><!-- STATS --><div class="stats"><div class="stat"><div class="stat-title">
+TOTAL APPLICATIONS
+</div><div
+class="stat-number"
+id="total">
+0
+</div></div><div class="stat"><div class="stat-title">
+PENDING
+</div><div
+class="stat-number"
+id="pending">
+0
+</div></div><div class="stat"><div class="stat-title">
+APPROVED
+</div><div
+class="stat-number"
+id="approved">
+0
+</div></div><div class="stat"><div class="stat-title">
+REJECTED
+</div><div
+class="stat-number"
+id="rejected">
+0
+</div></div></div><!-- SEARCH --><div class="toolbar"><input
+class="search"
+id="search"
+type="text"
+placeholder="Search by IGN or UID...">
+
+<button
+class="refresh"
+id="refreshButton">
+
+🔄 REFRESH
+
+</button></div><!-- TABLE --><div class="table-wrapper"><table><thead><tr><th>IGN</th>
+<th>UID</th>
+<th>ROLE</th>
+<th>RANK</th>
+<th>STATUS</th>
+<th>ACTION</th></tr></thead><tbody id="applications"><tr><td
+colspan="6"
+class="loading">Loading applications...
+
+</td></tr></tbody></table></div></div></section><!-- APPLICATION MODAL --><div id="applicationModal"><div class="modal-box"><div class="modal-header"><h2>
+⚔ APPLICATION DETAILS
+</h2><button
+class="close-button"
+onclick="closeApplication()">
+
+✕
+
+</button></div><div
+class="modal-content"
+id="applicationDetails">
+</div><div
+class="modal-actions"
+id="modalActions">
+</div></div></div><script>
 
 /*
 ========================================
@@ -787,11 +470,10 @@ SUPABASE CONFIG
 */
 
 const SUPABASE_URL =
-  "https://muyggfhblazjqoewrxth.supabase.co";
-
+"https://muyggfhblazjqoewrxth.supabase.co";
 
 const SUPABASE_ANON_KEY =
-  "sb_publishable_M_7Cb2GtvzQqLftmUJE_1Q_fXB1e3Ma";
+"sb_publishable_M_7Cb2GtvzQqLftmUJE_1Q_fXB1e3Ma";
 
 
 /*
@@ -801,9 +483,7 @@ VARIABLES
 */
 
 let accessToken = null;
-
 let allApplications = [];
-
 let selectedApplication = null;
 
 
@@ -814,63 +494,34 @@ ELEMENTS
 */
 
 const loginPage =
-  document.getElementById(
-    "loginPage"
-  );
-
+document.getElementById("loginPage");
 
 const dashboard =
-  document.getElementById(
-    "dashboard"
-  );
-
+document.getElementById("dashboard");
 
 const loginForm =
-  document.getElementById(
-    "loginForm"
-  );
-
+document.getElementById("loginForm");
 
 const loginButton =
-  document.getElementById(
-    "loginButton"
-  );
-
+document.getElementById("loginButton");
 
 const loginError =
-  document.getElementById(
-    "loginError"
-  );
-
+document.getElementById("loginError");
 
 const applicationsTable =
-  document.getElementById(
-    "applications"
-  );
-
+document.getElementById("applications");
 
 const errorBox =
-  document.getElementById(
-    "error"
-  );
-
+document.getElementById("error");
 
 const applicationModal =
-  document.getElementById(
-    "applicationModal"
-  );
-
+document.getElementById("applicationModal");
 
 const applicationDetails =
-  document.getElementById(
-    "applicationDetails"
-  );
-
+document.getElementById("applicationDetails");
 
 const modalActions =
-  document.getElementById(
-    "modalActions"
-  );
+document.getElementById("modalActions");
 
 
 /*
@@ -880,127 +531,86 @@ LOGIN
 */
 
 loginForm.addEventListener(
-  "submit",
-  async function(event) {
+"submit",
+async function(event){
 
-    event.preventDefault();
+event.preventDefault();
 
-    loginError.style.display =
-      "none";
+loginError.style.display="none";
 
-    loginButton.disabled =
-      true;
+loginButton.disabled=true;
 
-    loginButton.textContent =
-      "LOGGING IN...";
+loginButton.textContent="LOGGING IN...";
 
+const email =
+document.getElementById("email").value.trim();
 
-    const email =
-      document
-        .getElementById("email")
-        .value
-        .trim();
+const password =
+document.getElementById("password").value;
 
+try{
 
-    const password =
-      document
-        .getElementById("password")
-        .value;
+const response =
+await fetch(
+SUPABASE_URL +
+"/auth/v1/token?grant_type=password",
+{
+method:"POST",
 
+headers:{
+"apikey":SUPABASE_ANON_KEY,
+"Content-Type":"application/json"
+},
 
-    try {
-
-      const response =
-        await fetch(
-
-          SUPABASE_URL +
-          "/auth/v1/token?grant_type=password",
-
-          {
-
-            method:
-              "POST",
-
-            headers: {
-
-              "apikey":
-                SUPABASE_ANON_KEY,
-
-              "Content-Type":
-                "application/json"
-
-            },
-
-            body:
-              JSON.stringify({
-
-                email:
-                  email,
-
-                password:
-                  password
-
-              })
-
-          }
-
-        );
-
-
-      const result =
-        await response.json();
-
-
-      if (!response.ok) {
-
-        throw new Error(
-          result.error_description ||
-          result.msg ||
-          result.message ||
-          "Login failed."
-        );
-
-      }
-
-
-      accessToken =
-        result.access_token;
-
-
-      localStorage.setItem(
-        "tc_admin_access_token",
-        accessToken
-      );
-
-
-      showDashboard();
-
-
-    }
-
-
-    catch (error) {
-
-      console.error(error);
-
-      loginError.textContent =
-        error.message;
-
-      loginError.style.display =
-        "block";
-
-
-      loginButton.disabled =
-        false;
-
-      loginButton.textContent =
-        "🔐 LOGIN";
-
-    }
-
-  }
-
+body:JSON.stringify({
+email:email,
+password:password
+})
+}
 );
+
+const result =
+await response.json();
+
+if(!response.ok){
+
+throw new Error(
+result.error_description ||
+result.msg ||
+result.message ||
+"Login failed."
+);
+
+}
+
+accessToken =
+result.access_token;
+
+localStorage.setItem(
+"tc_admin_access_token",
+accessToken
+);
+
+showDashboard();
+
+}
+
+catch(error){
+
+console.error(error);
+
+loginError.textContent =
+error.message;
+
+loginError.style.display="block";
+
+loginButton.disabled=false;
+
+loginButton.textContent="🔐 LOGIN";
+
+}
+
+});
 
 
 /*
@@ -1009,15 +619,13 @@ SHOW DASHBOARD
 ========================================
 */
 
-function showDashboard() {
+function showDashboard(){
 
-  loginPage.style.display =
-    "none";
+loginPage.style.display="none";
 
-  dashboard.style.display =
-    "block";
+dashboard.style.display="block";
 
-  loadApplications();
+loadApplications();
 
 }
 
@@ -1029,27 +637,25 @@ LOGOUT
 */
 
 document
-  .getElementById("logoutButton")
-  .addEventListener(
-    "click",
-    function() {
+.getElementById("logoutButton")
+.addEventListener(
+"click",
+function(){
 
-      accessToken = null;
+accessToken=null;
 
-      localStorage.removeItem(
-        "tc_admin_access_token"
-      );
+localStorage.removeItem(
+"tc_admin_access_token"
+);
 
-      dashboard.style.display =
-        "none";
+dashboard.style.display="none";
 
-      loginPage.style.display =
-        "flex";
+loginPage.style.display="flex";
 
-      loginForm.reset();
+loginForm.reset();
 
-    }
-  );
+}
+);
 
 
 /*
@@ -1058,96 +664,74 @@ LOAD APPLICATIONS
 ========================================
 */
 
-async function loadApplications() {
+async function loadApplications(){
 
-  errorBox.style.display =
-    "none";
+errorBox.style.display="none";
 
+applicationsTable.innerHTML=`
 
-  applicationsTable.innerHTML = `
+<tr>
 
-    <tr>
+<td colspan="6" class="loading">
+Loading applications...
+</td>
 
-      <td
-        colspan="6"
-        class="loading"
-      >
+</tr>
 
-        Loading applications...
+`;
 
-      </td>
+try{
 
-    </tr>
+const response =
+await fetch(
 
-  `;
+SUPABASE_URL +
+"/rest/v1/applications?select=*&order=created_at.desc",
 
+{
 
-  try {
+method:"GET",
 
-    const response =
-      await fetch(
+headers:{
+"apikey":SUPABASE_ANON_KEY,
+"Authorization":"Bearer "+accessToken
+}
 
-        SUPABASE_URL +
-        "/rest/v1/applications?select=*&order=created_at.desc",
+}
 
-        {
+);
 
-          method:
-            "GET",
+const text =
+await response.text();
 
-          headers: {
+if(!response.ok){
 
-            "apikey":
-              SUPABASE_ANON_KEY,
+throw new Error(text);
 
-            "Authorization":
-              "Bearer " +
-              accessToken
+}
 
-          }
+allApplications =
+JSON.parse(text);
 
-        }
+updateStats();
 
-      );
+displayApplications(
+allApplications
+);
 
+}
 
-    const text =
-      await response.text();
+catch(error){
 
+console.error(error);
 
-    if (!response.ok) {
+errorBox.textContent =
+"Could not load applications: "+
+error.message;
 
-      throw new Error(text);
+errorBox.style.display="block";
 
-    }
-
-
-    allApplications =
-      JSON.parse(text);
-
-
-    updateStats();
-
-    displayApplications(
-      allApplications
-    );
-
-
-  }
-
-
-  catch (error) {
-
-    console.error(error);
-
-    errorBox.textContent =
-      "Could not load applications: " +
-      error.message;
-
-    errorBox.style.display =
-      "block";
-
-  }
+}
 
 }
 
@@ -1158,39 +742,29 @@ STATS
 ========================================
 */
 
-function updateStats() {
+function updateStats(){
 
-  document.getElementById(
-    "total"
-  ).textContent =
-    allApplications.length;
+document.getElementById("total")
+.textContent =
+allApplications.length;
 
+document.getElementById("pending")
+.textContent =
+allApplications.filter(
+app=>app.status==="pending"
+).length;
 
-  document.getElementById(
-    "pending"
-  ).textContent =
-    allApplications.filter(
-      app =>
-        app.status === "pending"
-    ).length;
+document.getElementById("approved")
+.textContent =
+allApplications.filter(
+app=>app.status==="approved"
+).length;
 
-
-  document.getElementById(
-    "approved"
-  ).textContent =
-    allApplications.filter(
-      app =>
-        app.status === "approved"
-    ).length;
-
-
-  document.getElementById(
-    "rejected"
-  ).textContent =
-    allApplications.filter(
-      app =>
-        app.status === "rejected"
-    ).length;
+document.getElementById("rejected")
+.textContent =
+allApplications.filter(
+app=>app.status==="rejected"
+).length;
 
 }
 
@@ -1202,127 +776,94 @@ DISPLAY APPLICATIONS
 */
 
 function displayApplications(
-  applications
-) {
+applications
+){
 
-  if (!applications.length) {
+if(!applications.length){
 
-    applicationsTable.innerHTML = `
+applicationsTable.innerHTML=`
 
-      <tr>
+<tr>
 
-        <td
-          colspan="6"
-          class="loading"
-        >
+<td colspan="6" class="loading">
+No applications found.
+</td>
 
-          No applications found.
+</tr>
 
-        </td>
+`;
 
-      </tr>
+return;
 
-    `;
+}
 
-    return;
+applicationsTable.innerHTML =
+applications.map(
+app=>`
 
-  }
+<tr>
 
+<td>${safe(app.ign)}</td>
 
-  applicationsTable.innerHTML =
+<td>${safe(app.uid)}</td>
 
-    applications.map(
-      app => `
+<td>${safe(app.player_role)}</td>
 
-      <tr>
+<td>${safe(app.player_rank)}</td>
 
-        <td>
-          ${safe(app.ign)}
-        </td>
+<td>
 
+<span class="status ${safe(app.status)}">
 
-        <td>
-          ${safe(app.uid)}
-        </td>
+${safe(app.status).toUpperCase()}
 
+</span>
 
-        <td>
-          ${safe(app.player_role)}
-        </td>
+</td>
 
+<td>
 
-        <td>
-          ${safe(app.player_rank)}
-        </td>
+<button
+class="action view"
+onclick="viewApplication('${safe(app.application_id)}')">
 
+👁 VIEW
 
-        <td>
+</button>
 
-          <span
-            class="status ${safe(app.status)}"
-          >
+${
+app.status==="pending"
 
-            ${safe(app.status)}
+?`
 
-          </span>
+<button
+class="action approve"
+onclick="updateStatus('${safe(app.application_id)}','approved')">
 
-        </td>
+✓
 
+</button>
 
-        <td>
+<button
+class="action reject"
+onclick="updateStatus('${safe(app.application_id)}','rejected')">
 
-          <button
-            class="action view"
-            onclick="viewApplication('${safe(app.application_id)}')"
-          >
+✕
 
-            👁 VIEW
+</button>
 
-          </button>
+`
 
+:""
 
-          ${
-            app.status === "pending"
+}
 
-            ? `
+</td>
 
-              <button
-                class="action approve"
-                onclick="updateStatus(
-                  '${safe(app.application_id)}',
-                  'approved'
-                )"
-              >
+</tr>
 
-                ✓
-
-              </button>
-
-
-              <button
-                class="action reject"
-                onclick="updateStatus(
-                  '${safe(app.application_id)}',
-                  'rejected'
-                )"
-              >
-
-                ✕
-
-              </button>
-
-            `
-
-            : ""
-
-          }
-
-        </td>
-
-      </tr>
-
-    `
-    ).join("");
+`
+).join("");
 
 }
 
@@ -1334,204 +875,265 @@ VIEW FULL APPLICATION
 */
 
 function viewApplication(
-  applicationId
-) {
+applicationId
+){
 
-  selectedApplication =
-    allApplications.find(
-      app =>
-        String(app.application_id) ===
-        String(applicationId)
-    );
+selectedApplication =
+allApplications.find(
+app =>
+String(app.application_id) ===
+String(applicationId)
+);
 
+if(!selectedApplication){
 
-  if (!selectedApplication) {
+alert("Application could not be found.");
 
-    alert(
-      "Application could not be found."
-    );
+return;
 
-    return;
+}
 
-  }
+const app =
+selectedApplication;
 
 
-  const app =
-    selectedApplication;
+/*
+========================================
+PROFILE SCREENSHOT
+========================================
+*/
 
+let screenshotHTML = "";
 
-  applicationDetails.innerHTML = `
+if(app.profile_screenshot_url){
 
-    <div
-      class="modal-status
-      ${safe(app.status)}"
-    >
+screenshotHTML = `
 
-      STATUS:
-      ${safe(app.status).toUpperCase()}
+<div class="screenshot-box">
 
-    </div>
+<h3>📸 FREE FIRE PROFILE SCREENSHOT</h3>
 
+<img
+src="${safe(app.profile_screenshot_url)}"
+class="profile-image"
+alt="Free Fire profile screenshot"
+onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
 
-    ${detail(
-      "Application ID",
-      app.application_id
-    )}
+<div
+class="image-error"
+style="display:none;">
 
+⚠️ Unable to load the profile screenshot.
 
-    ${detail(
-      "In-Game Name",
-      app.ign
-    )}
+</div>
 
+</div>
 
-    ${detail(
-      "Free Fire UID",
-      app.uid
-    )}
+`;
 
+}else{
 
-    ${detail(
-      "Gender",
-      app.gender
-    )}
+screenshotHTML = `
 
+<div class="screenshot-box">
 
-    ${detail(
-      "WhatsApp / Contact",
-      app.contact
-    )}
+<h3>📸 FREE FIRE PROFILE SCREENSHOT</h3>
 
+<div class="image-error">
 
-    ${detail(
-      "Main Role",
-      app.player_role
-    )}
+No profile screenshot was uploaded.
 
+</div>
 
-    ${detail(
-      "Current Rank",
-      app.player_rank
-    )}
+</div>
 
+`;
 
-    ${detail(
-      "Headshot %",
-      app.headshot
-    )}
+}
 
 
-    ${detail(
-      "BR / CS",
-      app.game_mode
-    )}
+/*
+========================================
+APPLICATION DETAILS
+========================================
+*/
 
+applicationDetails.innerHTML = `
 
-    ${detail(
-      "Microphone",
-      app.microphone
-    )}
+<div class="modal-status ${safe(app.status)}">
 
+STATUS:
+${safe(app.status).toUpperCase()}
 
-    ${detail(
-      "Previous Guild / Team",
-      app.previous_guild
-    )}
+</div>
 
 
-    <div class="detail">
+${detail(
+"Application ID",
+app.application_id
+)}
 
-      <div class="detail-label">
-        Why do you want to join
-        THE ⚔ CONQUEROR?
-      </div>
 
-      <div
-        class="detail-value detail-reason"
-      >
+${detail(
+"In-Game Name",
+app.ign
+)}
 
-        ${safe(
-          app.reason ||
-          "No reason provided."
-        )}
 
-      </div>
+${detail(
+"Free Fire UID",
+app.uid
+)}
 
-    </div>
 
+${detail(
+"Game Level",
+app.game_level
+)}
 
-    ${detail(
-      "Submitted",
-      app.created_at
-        ? new Date(
-            app.created_at
-          ).toLocaleString()
-        : "Unknown"
-    )}
 
-  `;
+${detail(
+"Prime Level",
+app.prime_level
+)}
 
 
-  if (
-    app.status === "pending"
-  ) {
+${detail(
+"Gender",
+app.gender
+)}
 
-    modalActions.innerHTML = `
 
-      <button
-        class="modal-approve"
-        onclick="updateStatus(
-          '${safe(app.application_id)}',
-          'approved'
-        )"
-      >
+${detail(
+"WhatsApp / Contact",
+app.contact
+)}
 
-        ✓ APPROVE APPLICATION
 
-      </button>
+${detail(
+"Main Role",
+app.player_role
+)}
 
 
-      <button
-        class="modal-reject"
-        onclick="updateStatus(
-          '${safe(app.application_id)}',
-          'rejected'
-        )"
-      >
+${detail(
+"Current Rank",
+app.player_rank
+)}
 
-        ✕ REJECT APPLICATION
 
-      </button>
+${detail(
+"Headshot %",
+app.headshot
+)}
 
-    `;
 
-  }
+${detail(
+"Game Mode",
+app.game_mode
+)}
 
 
-  else {
+${detail(
+"Microphone",
+app.microphone
+)}
 
-    modalActions.innerHTML = `
 
-      <button
-        class="close-button"
-        onclick="closeApplication()"
-      >
+${detail(
+"Previous Guild / Team",
+app.previous_guild
+)}
 
-        CLOSE
 
-      </button>
+${screenshotHTML}
 
-    `;
 
-  }
+<div class="detail">
 
+<div class="detail-label">
 
-  applicationModal.style.display =
-    "block";
+WHY DO YOU WANT TO JOIN
+THE ⚔ CONQUEROR?
 
+</div>
 
-  document.body.style.overflow =
-    "hidden";
+<div class="detail-value detail-reason">
+
+${safe(
+app.reason ||
+"No reason provided."
+)}
+
+</div>
+
+</div>
+
+
+${detail(
+"Submitted",
+app.created_at
+?new Date(app.created_at).toLocaleString()
+:"Unknown"
+)}
+
+`;
+
+
+/*
+========================================
+MODAL ACTIONS
+========================================
+*/
+
+if(app.status==="pending"){
+
+modalActions.innerHTML=`
+
+<button
+class="modal-approve"
+onclick="updateStatus(
+'${safe(app.application_id)}',
+'approved'
+)">
+
+✓ APPROVE APPLICATION
+
+</button>
+
+<button
+class="modal-reject"
+onclick="updateStatus(
+'${safe(app.application_id)}',
+'rejected'
+)">
+
+✕ REJECT APPLICATION
+
+</button>
+
+`;
+
+}else{
+
+modalActions.innerHTML=`
+
+<button
+class="close-button"
+onclick="closeApplication()">
+
+CLOSE
+
+</button>
+
+`;
+
+}
+
+
+applicationModal.style.display="block";
+
+document.body.style.overflow="hidden";
 
 }
 
@@ -1543,36 +1145,34 @@ DETAIL HELPER
 */
 
 function detail(
-  label,
-  value
-) {
+label,
+value
+){
 
-  return `
+return `
 
-    <div class="detail">
+<div class="detail">
 
-      <div class="detail-label">
-        ${safe(label)}
-      </div>
+<div class="detail-label">
+${safe(label)}
+</div>
 
-      <div class="detail-value">
+<div class="detail-value">
 
-        ${
-          value !== null &&
-          value !== undefined &&
-          value !== ""
+${
+value !== null &&
+value !== undefined &&
+value !== ""
 
-            ? safe(value)
+?safe(value)
+:"Not provided"
+}
 
-            : "Not provided"
+</div>
 
-        }
+</div>
 
-      </div>
-
-    </div>
-
-  `;
+`;
 
 }
 
@@ -1583,16 +1183,13 @@ CLOSE APPLICATION
 ========================================
 */
 
-function closeApplication() {
+function closeApplication(){
 
-  applicationModal.style.display =
-    "none";
+applicationModal.style.display="none";
 
-  document.body.style.overflow =
-    "";
+document.body.style.overflow="";
 
-  selectedApplication =
-    null;
+selectedApplication=null;
 
 }
 
@@ -1604,52 +1201,40 @@ SEARCH
 */
 
 document
-  .getElementById("search")
-  .addEventListener(
-    "input",
-    function() {
+.getElementById("search")
+.addEventListener(
+"input",
+function(){
 
-      const term =
-        this.value
-          .toLowerCase()
-          .trim();
+const term =
+this.value.toLowerCase().trim();
 
+const filtered =
+allApplications.filter(
+app =>
 
-      const filtered =
-        allApplications.filter(
-          app =>
+String(app.ign||"")
+.toLowerCase()
+.includes(term)
 
-            String(
-              app.ign || ""
-            )
-            .toLowerCase()
-            .includes(term)
+||
 
-            ||
+String(app.uid||"")
+.toLowerCase()
+.includes(term)
 
-            String(
-              app.uid || ""
-            )
-            .toLowerCase()
-            .includes(term)
+||
 
-            ||
+String(app.application_id||"")
+.toLowerCase()
+.includes(term)
 
-            String(
-              app.application_id || ""
-            )
-            .toLowerCase()
-            .includes(term)
+);
 
-        );
+displayApplications(filtered);
 
-
-      displayApplications(
-        filtered
-      );
-
-    }
-  );
+}
+);
 
 
 /*
@@ -1659,11 +1244,11 @@ REFRESH
 */
 
 document
-  .getElementById("refreshButton")
-  .addEventListener(
-    "click",
-    loadApplications
-  );
+.getElementById("refreshButton")
+.addEventListener(
+"click",
+loadApplications
+);
 
 
 /*
@@ -1673,103 +1258,90 @@ APPROVE / REJECT
 */
 
 async function updateStatus(
-  applicationId,
-  newStatus
-) {
+applicationId,
+newStatus
+){
 
-  const action =
-    newStatus === "approved"
-      ? "approve"
-      : "reject";
+const action =
+newStatus==="approved"
+?"approve"
+:"reject";
 
+if(
+!confirm(
+"Are you sure you want to "+
+action+
+" this application?"
+)
+){
 
-  if (
-    !confirm(
-      "Are you sure you want to " +
-      action +
-      " this application?"
-    )
-  ) {
+return;
 
-    return;
+}
 
-  }
+try{
 
+const response =
+await fetch(
 
-  try {
+SUPABASE_URL+
+"/rest/v1/applications"+
+"?application_id=eq."+
+encodeURIComponent(applicationId),
 
-    const response =
-      await fetch(
+{
 
-        SUPABASE_URL +
-        "/rest/v1/applications" +
-        "?application_id=eq." +
-        encodeURIComponent(
-          applicationId
-        ),
+method:"PATCH",
 
-        {
+headers:{
 
-          method:
-            "PATCH",
+"apikey":
+SUPABASE_ANON_KEY,
 
-          headers: {
+"Authorization":
+"Bearer "+
+accessToken,
 
-            "apikey":
-              SUPABASE_ANON_KEY,
+"Content-Type":
+"application/json",
 
-            "Authorization":
-              "Bearer " +
-              accessToken,
+"Prefer":
+"return=minimal"
 
-            "Content-Type":
-              "application/json",
+},
 
-            "Prefer":
-              "return=minimal"
+body:
+JSON.stringify({
+status:newStatus
+})
 
-          },
+}
 
-          body:
-            JSON.stringify({
+);
 
-              status:
-                newStatus
+const text =
+await response.text();
 
-            })
+if(!response.ok){
 
-        }
+throw new Error(text);
 
-      );
+}
 
+closeApplication();
 
-    const text =
-      await response.text();
+await loadApplications();
 
+}
 
-    if (!response.ok) {
+catch(error){
 
-      throw new Error(text);
+alert(
+"Could not update application:\n\n"+
+error.message
+);
 
-    }
-
-
-    closeApplication();
-
-    await loadApplications();
-
-
-  }
-
-
-  catch (error) {
-
-    alert(
-      "Could not update application:\n\n" +
-      error.message
-    );
-
-  }
+}
 
 }
 
@@ -1780,44 +1352,24 @@ SAFE TEXT
 ========================================
 */
 
-function safe(value) {
+function safe(value){
 
-  if (
-    value === null ||
-    value === undefined
-  ) {
+if(
+value===null ||
+value===undefined
+){
 
-    return "";
+return "";
 
-  }
+}
 
+return String(value)
 
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
@@ -1828,104 +1380,94 @@ CHECK SAVED SESSION
 ========================================
 */
 
-async function checkSession() {
+async function checkSession(){
 
-  const savedToken =
-    localStorage.getItem(
-      "tc_admin_access_token"
-    );
+const savedToken =
+localStorage.getItem(
+"tc_admin_access_token"
+);
 
+if(!savedToken){
 
-  if (!savedToken) {
+return;
 
-    return;
+}
 
-  }
+accessToken =
+savedToken;
 
+try{
 
-  accessToken =
-    savedToken;
+const response =
+await fetch(
 
+SUPABASE_URL+
+"/auth/v1/user",
 
-  try {
+{
 
-    const response =
-      await fetch(
+method:"GET",
 
-        SUPABASE_URL +
-        "/auth/v1/user",
+headers:{
 
-        {
+"apikey":
+SUPABASE_ANON_KEY,
 
-          method:
-            "GET",
+"Authorization":
+"Bearer "+
+accessToken
 
-          headers: {
+}
 
-            "apikey":
-              SUPABASE_ANON_KEY,
+}
 
-            "Authorization":
-              "Bearer " +
-              accessToken
+);
 
-          }
+if(!response.ok){
 
-        }
+throw new Error(
+"Session expired."
+);
 
-      );
+}
 
+showDashboard();
 
-    if (!response.ok) {
+}
 
-      throw new Error(
-        "Session expired."
-      );
+catch(error){
 
-    }
+accessToken=null;
 
+localStorage.removeItem(
+"tc_admin_access_token"
+);
 
-    showDashboard();
-
-
-  }
-
-
-  catch (error) {
-
-    accessToken =
-      null;
-
-
-    localStorage.removeItem(
-      "tc_admin_access_token"
-    );
-
-  }
+}
 
 }
 
 
 /*
 ========================================
-CLOSE MODAL WHEN CLICKING OUTSIDE
+CLOSE MODAL OUTSIDE
 ========================================
 */
 
 applicationModal.addEventListener(
-  "click",
-  function(event) {
+"click",
+function(event){
 
-    if (
-      event.target ===
-      applicationModal
-    ) {
+if(
+event.target ===
+applicationModal
+){
 
-      closeApplication();
+closeApplication();
 
-    }
+}
 
-  }
+}
 );
 
 
@@ -1937,8 +1479,5 @@ START
 
 checkSession();
 
-</script>
-
-</body>
-
+</script></body>
 </html>
